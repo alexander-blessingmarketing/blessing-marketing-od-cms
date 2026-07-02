@@ -1,0 +1,2 @@
+patchedDependencies:
+  tinacms-authjs@22.0.1: patches/tinacms-authjs@22.0.1.patch

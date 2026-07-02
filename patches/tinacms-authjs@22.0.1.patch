@@ -1,0 +1,22 @@
+diff --git a/dist/index.js b/dist/index.js
+index 13c1c4a82a0ef3a0b6f675d76ea51724b0f7a29e..c95ab5103240a0fd6abd11e023be377eb40a8ac5 100644
+--- a/dist/index.js	
++++ b/dist/index.js	
+@@ -72,7 +72,7 @@ var TinaCredentialsProvider = ({
+   databaseClient,
+   name = TINA_CREDENTIALS_PROVIDER_NAME
+ }) => {
+-  const p = CredentialsProvider({
++  const p = (CredentialsProvider.default || CredentialsProvider)({
+     credentials: {
+       username: { label: "Username", type: "text" },
+       password: { label: "Password", type: "password" }
+@@ -131,7 +131,7 @@ var AuthJsBackendAuthProvider = ({
+           );
+           const authSubRoutes = url.pathname?.replace(`${opts.basePath}auth/`, "")?.split("/");
+           req.query.nextauth = authSubRoutes;
+-          await NextAuth(authOptions)(req, res);
++          await (NextAuth.default || NextAuth)(authOptions)(req, res);
+         }
+       }
+     }
