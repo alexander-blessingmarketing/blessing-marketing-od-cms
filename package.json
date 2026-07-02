@@ -1,0 +1,38 @@
+{
+  "name": "blessing-marketing-od-cms",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"next dev --webpack\"",
+    "dev:prod": "TINA_PUBLIC_IS_LOCAL=false tinacms dev -c \"next dev --webpack\"",
+    "build": "tinacms build --partial-reindex && next build --webpack",
+    "start": "next start -p 3000",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "^25.8.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.2.6",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.3.0"
+  },
+  "dependencies": {
+    "@tinacms/cli": "^2.3.1",
+    "@tinacms/datalayer": "^2.0.21",
+    "mongodb-level": "latest",
+    "next": "^16.2.6",
+    "next-auth": "^4.24.14",
+    "react": "^19",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^19",
+    "tinacms": "^3.8.1",
+    "tinacms-authjs": "^22.0.1",
+    "tinacms-gitprovider-github": "^4.1.8",
+    "typescript": "^6.0.3"
+  }
+}

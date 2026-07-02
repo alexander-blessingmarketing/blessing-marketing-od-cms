@@ -1,0 +1,29 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    networks: [internal]
+
+  cms:
+    build: https://github.com/alexander-blessingmarketing/blessing-marketing-od-cms.git
+    restart: unless-stopped
+    env_file: [.env]
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/
+    depends_on: [mongo]
+    networks: [internal]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bmod-cms.rule=Host(`srv1379189.hstgr.cloud`)"
+      - "traefik.http.routers.bmod-cms.entrypoints=websecure"
+      - "traefik.http.routers.bmod-cms.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bmod-cms.loadbalancer.server.port=3000"
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  mongo-data:

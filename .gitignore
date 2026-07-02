@@ -1,0 +1,34 @@
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+tsconfig.tsbuildinfo
+
+# production
+/build
+
+# tina generated artifacts (rebuilt by `tinacms build`/`tinacms dev`)
+
+# local-verification-only copy of the client content (see README) — the real
+# content lives in the blessing-marketing-od-site repo and is fetched via the
+# GitHub provider at runtime in non-local mode
+/src/clients/blessing-marketing-od
+
+# misc
+.DS_Store
+.env
+.env.local
+.idea
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
