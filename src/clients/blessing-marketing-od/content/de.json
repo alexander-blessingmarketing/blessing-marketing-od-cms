@@ -1,0 +1,315 @@
+{
+  "brand": "Blessing-Marketing",
+  "logo": "assets/logo.png",
+  "logoAlt": "Logo von Blessing Marketing mit stilisiertem blauen B",
+  "favicon": "assets/favicon.png",
+  "nav": [
+    {
+      "label": "Leistungen",
+      "href": "/#leistungen"
+    },
+    {
+      "label": "Ergebnisse",
+      "href": "/#ergebnisse"
+    },
+    {
+      "label": "Referenzen",
+      "href": "/#referenzen"
+    },
+    {
+      "label": "Anrufen",
+      "href": "tel:+4915788681222"
+    },
+    {
+      "label": "Karriere",
+      "href": "/karriere"
+    }
+  ],
+  "footerNote": "© Blessing-Marketing · Starnberg",
+  "hero": {
+    "eyebrow": "Marketing & Recruiting · Starnberg",
+    "title": "Marketing ohne Blackbox.",
+    "subtitle": "Datengetriebenes Onlinemarketing und Social Recruiting für Unternehmen, die Wachstum planbar machen wollen.",
+    "ctaLabel": "Kostenlose Strategie anfragen",
+    "ctaHref": "tel:+4915788681222",
+    "image": "assets/office.jpg",
+    "imageAlt": "Büro der Blessing Marketing GmbH"
+  },
+  "logos": {
+    "eyebrow": "Partner & Kunden",
+    "title": "Offizieller Partner & über 80 zufriedene Kunden",
+    "items": [
+      {
+        "src": "assets/badge-meta-business-partner.png",
+        "alt": "Meta Business Partner"
+      },
+      {
+        "src": "assets/badge-google-partner.png",
+        "alt": "Google Partner"
+      },
+      {
+        "src": "assets/badge-linkedin.png",
+        "alt": "LinkedIn"
+      },
+      {
+        "src": "assets/badge-meta-certified.png",
+        "alt": "Meta Certified Media Planning Professional"
+      },
+      {
+        "src": "assets/partner-messerschmidt-grabsteine.png",
+        "alt": "Messerschmidt Grabsteine"
+      },
+      {
+        "src": "assets/partner-simpleclub.png",
+        "alt": "simpleclub"
+      },
+      {
+        "src": "assets/partner-prefag.png",
+        "alt": "PREFAG"
+      },
+      {
+        "src": "assets/partner-wodewa.png",
+        "alt": "wodewa"
+      },
+      {
+        "src": "assets/partner-die-bildungsagenten.jpg",
+        "alt": "Die Bildungsagenten"
+      },
+      {
+        "src": "assets/partner-velptec.png",
+        "alt": "velpTEC EDUtainment"
+      },
+      {
+        "src": "assets/partner-bloody-harry.png",
+        "alt": "Bloody Harry Spirits & More"
+      },
+      {
+        "src": "assets/partner-elderlabs.png",
+        "alt": "Elderlabs Biotech & Research"
+      },
+      {
+        "src": "assets/partner-duttenhofer.jpg",
+        "alt": "Duttenhofer CNC Dreh- und Frästechnik"
+      },
+      {
+        "src": "assets/partner-carmani.png",
+        "alt": "CARMANI"
+      },
+      {
+        "src": "assets/partner-8beaufort.png",
+        "alt": "8 beaufort recycled sails Hamburg"
+      },
+      {
+        "src": "assets/partner-green-product-award.jpg",
+        "alt": "Green Product Award"
+      },
+      {
+        "src": "assets/partner-korumi.png",
+        "alt": "KORUMI"
+      },
+      {
+        "src": "assets/partner-teamwerk.jpg",
+        "alt": "TEAMWERK"
+      },
+      {
+        "src": "assets/partner-oxigin.png",
+        "alt": "Oxigin"
+      },
+      {
+        "src": "assets/partner-journal-international.jpg",
+        "alt": "Journal International"
+      },
+      {
+        "src": "assets/partner-ecomex.jpg",
+        "alt": "Ecomex Business Academy"
+      },
+      {
+        "src": "assets/partner-eli-die-fee.png",
+        "alt": "Eli die Fee Franchise"
+      },
+      {
+        "src": "assets/partner-messerschmidt-m.png",
+        "alt": "Messerschmidt"
+      },
+      {
+        "src": "assets/partner-fixario.png",
+        "alt": "FIXARIO"
+      },
+      {
+        "src": "assets/partner-pflegewerk.png",
+        "alt": "PFLEGEWERK"
+      },
+      {
+        "src": "assets/partner-seedeo.png",
+        "alt": "Seedeo"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Leistungen",
+    "title": "Was wir machen",
+    "items": [
+      {
+        "title": "Datengetriebenes Onlinemarketing",
+        "description": "Wir steigern Wachstum und Umsatz langfristig und nachhaltig — messbar statt nach Bauchgefühl."
+      },
+      {
+        "title": "Individuelle Marketing-Strategie",
+        "description": "Eine maßgeschneiderte Strategie als Fundament für planbares Wachstum."
+      },
+      {
+        "title": "Social Recruiting",
+        "description": "Ein konstanter Strom qualifizierter Bewerber und eine starke Arbeitgebermarke."
+      }
+    ]
+  },
+  "stats": {
+    "eyebrow": "In Zahlen",
+    "title": "Wir sind keine normale Agentur",
+    "items": [
+      {
+        "value": "457+",
+        "label": "Umgesetzte Kampagnen"
+      },
+      {
+        "value": "1.052+",
+        "label": "Eingestellte Mitarbeiter bei unseren Kunden"
+      },
+      {
+        "value": "6,4 Mio €",
+        "label": "Verwaltetes Werbebudget"
+      },
+      {
+        "value": "4,9/5,0",
+        "label": "Bewertung auf Google"
+      }
+    ]
+  },
+  "cases": {
+    "eyebrow": "Case Studies",
+    "title": "Ergebnisse unserer Partnerunternehmen",
+    "items": [
+      {
+        "client": "Eli die Fee Franchise GmbH",
+        "metric": "1.014 Bewerbungen in 6 Monaten",
+        "situation": [
+          "Kaum Bewerbungen über klassische Stellenportale",
+          "Keine Sichtbarkeit als Arbeitgebermarke",
+          "Wenig Planbarkeit in der Kundengewinnung"
+        ],
+        "result": [
+          "Konstanten Strom an qualifizierten Bewerbern",
+          "Aufbau einer regionalen Arbeitgebermarke",
+          "Mehr Planbarkeit in Mitarbeiter-, Kunden- und Franchisenehmergewinnung"
+        ],
+        "logo": "assets/partner-eli-die-fee.png",
+        "logoAlt": "Eli die Fee Franchise",
+        "image": "assets/case-eli-die-fee.png",
+        "imageAlt": "Zwei Männer sitzen an einem weißen Tisch, ein Laptop liegt vor dem Mann links.",
+        "href": "https://www.elidiefee-franchise.de/"
+      },
+      {
+        "client": "Prefag Carl Rivoir GmbH & Co. KG",
+        "metric": "11 Zerspanungsmechaniker in 180 Tagen",
+        "situation": [
+          "Keine Bewerbungen über Stellenportale und Ausschreibungen",
+          "Monatelang offene Stellen",
+          "Mitarbeiter sind der größte Engpass"
+        ],
+        "result": [
+          "Omnipräsenz als Arbeitgebermarke in der Region",
+          "Wöchentlich neue Bewerbungen von qualifizierten Fachkräften",
+          "Planbare Lösung zum Besetzen offener Stellen"
+        ],
+        "logo": "assets/partner-prefag.png",
+        "logoAlt": "PREFAG – Partner in Präzision",
+        "image": "assets/case-prefag.jpg",
+        "imageAlt": "Sieben Mitarbeiter in blauen Hemden stehen im Kreis und unterhalten sich.",
+        "href": "https://www.prefag.de/"
+      },
+      {
+        "client": "AD Vimotion GmbH (Oxigin & Carmani)",
+        "metric": "8.328.579 Impressionen in 12 Monaten",
+        "situation": [
+          "Wenig Planbarkeit und keine messbaren Ergebnisse im Onlinemarketing",
+          "Auf der Suche nach einem zuverlässigen Partner für das Onlinemarketing"
+        ],
+        "result": [
+          "Digitale Omnipräsenz in der Zielgruppe",
+          "8 Mio+ Impressionen und 96.000+ Webseiteaufrufe",
+          "Mehr Planbarkeit in Mitarbeiter- und Kundengewinnung"
+        ],
+        "logo": "assets/partner-oxigin.png",
+        "logoAlt": "Oxigin",
+        "image": "assets/case-oxigin-carmani.png",
+        "imageAlt": "Zwei Personen lächeln hinter einem Tisch mit Felgen.",
+        "href": "https://www.oxigin.de/"
+      },
+      {
+        "client": "wodewa GmbH",
+        "metric": "ROAS von 0,5 auf 9,44 nach 32 Tagen",
+        "situation": [
+          "Traffic-Kampagnen auf Facebook und Instagram ohne nachhaltige Strategie",
+          "0,5er ROAS",
+          "Auf einzelne große B2B-Kunden angewiesen"
+        ],
+        "result": [
+          "Full-Funnel-Kampagne mit durchdachtem Marketingkonzept",
+          "Steigerung des ROAS auf 9,44 nach 32 Tagen",
+          "Aufbau einer internationalen Marke für B2B und B2C in ihrer Branche"
+        ],
+        "logo": "assets/partner-wodewa.png",
+        "logoAlt": "wodewa – Made in Germany",
+        "image": "assets/case-wodewa.png",
+        "imageAlt": "Graues Sofa mit gestreiften Kissen vor einer Holzwand.",
+        "href": "https://www.wodewa.de/"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "Über uns",
+    "title": "Marketing als präziser Prozess — nicht als Blackbox.",
+    "paragraphs": [
+      "Wir verwandeln Marketing von einer Blackbox in einen präzisen, datengestützten Prozess. Für Unternehmen, die ihre Zukunft nicht dem Zufall überlassen, sondern sie konstruieren wollen.",
+      "Marketing und Recruiting kommen bei uns aus einer Hand — datenbasiert, transparent und auf messbare Ergebnisse ausgelegt."
+    ]
+  },
+  "people": {
+    "eyebrow": "Geschäftsführung",
+    "title": "Wer dahintersteht",
+    "items": [
+      {
+        "name": "Sebastian Blessing",
+        "role": "Geschäftsführer",
+        "image": "assets/founder-sebastian.jpg",
+        "imageAlt": "Sebastian Blessing, Geschäftsführer der Blessing Marketing GmbH"
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Referenzen",
+    "title": "Was Kunden sagen",
+    "items": [
+      {
+        "quote": "Durch die Zusammenarbeit mit Blessing Marketing haben wir einen konstanten Strom an qualifizierten Bewerbern erhalten.",
+        "author": "Eli die Fee Franchise GmbH",
+        "role": "Kunde"
+      },
+      {
+        "quote": "Die Marketingstrategien haben unsere Sichtbarkeit als Arbeitgebermarke erheblich gesteigert.",
+        "author": "Prefag Carl Rivoir GmbH & Co. KG",
+        "role": "Kunde"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Wachstum planbar machen?",
+    "subtitle": "Hol dir eine kostenlose, individuelle Marketing-Strategie.",
+    "ctaLabel": "Jetzt anrufen",
+    "ctaHref": "tel:+4915788681222"
+  },
+  "map": {
+    "title": "Standort",
+    "address": "Maximilianstr. 17, 82319 Starnberg"
+  }
+}

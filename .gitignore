@@ -17,10 +17,14 @@ tsconfig.tsbuildinfo
 
 # tina generated artifacts (rebuilt by `tinacms build`/`tinacms dev`)
 
-# local-verification-only copy of the client content (see README) — the real
-# content lives in the blessing-marketing-od-site repo and is fetched via the
-# GitHub provider at runtime in non-local mode
-/src/clients/blessing-marketing-od
+# The Tina self-hosted backend indexes content from the LOCAL filesystem baked
+# into the image at `tinacms build` time (the GitHub provider is only used for
+# write-back/commits, NOT for reading content at runtime). So the content +
+# assets the CMS edits MUST be tracked here, or the collection indexes 0 docs.
+# Build-only Astro files (Page.astro, _shell, preset.ts) stay ignored.
+/src/clients/blessing-marketing-od/*
+!/src/clients/blessing-marketing-od/content/
+!/src/clients/blessing-marketing-od/assets/
 
 # misc
 .DS_Store
