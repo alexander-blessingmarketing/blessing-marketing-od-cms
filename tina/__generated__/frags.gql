@@ -1,0 +1,125 @@
+fragment UserParts on User {
+  __typename
+  users {
+    __typename
+    username
+    name
+    email
+    password {
+      value
+      passwordChangeRequired
+    }
+  }
+}
+
+fragment BlessingParts on Blessing {
+  __typename
+  brand
+  logo
+  logoAlt
+  favicon
+  nav {
+    __typename
+    label
+    href
+  }
+  footerNote
+  hero {
+    __typename
+    eyebrow
+    title
+    subtitle
+    ctaLabel
+    ctaHref
+    image
+    imageAlt
+  }
+  logos {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      src
+      alt
+    }
+  }
+  services {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      title
+      description
+    }
+  }
+  stats {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      value
+      label
+    }
+  }
+  cases {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      client
+      metric
+      situation
+      result
+      logo
+      logoAlt
+      image
+      imageAlt
+      href
+    }
+  }
+  about {
+    __typename
+    eyebrow
+    title
+    paragraphs
+  }
+  people {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      name
+      role
+      image
+      imageAlt
+    }
+  }
+  testimonials {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      quote
+      author
+      role
+    }
+  }
+  cta {
+    __typename
+    title
+    subtitle
+    ctaLabel
+    ctaHref
+  }
+  map {
+    __typename
+    title
+    address
+  }
+}
