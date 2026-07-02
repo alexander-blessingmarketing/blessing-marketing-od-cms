@@ -24,4 +24,4 @@ RUN pnpm exec next build --webpack
 EXPOSE 3000
 
 # Reindex tina content against Mongo, then start the Next.js server.
-ENTRYPOINT ["sh", "-c", "pnpm exec tinacms build --partial-reindex && pnpm exec next start -p 3000"]
+ENTRYPOINT ["sh", "-c", "pnpm exec tinacms build && pnpm exec next start -p 3000"]
