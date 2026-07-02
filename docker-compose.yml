@@ -7,7 +7,7 @@ services:
     networks: [internal]
 
   cms:
-    build: https://github.com/alexander-blessingmarketing/blessing-marketing-od-cms.git
+    image: ghcr.io/alexander-blessingmarketing/blessing-marketing-od-cms:latest
     restart: unless-stopped
     env_file: [.env]
     environment:
