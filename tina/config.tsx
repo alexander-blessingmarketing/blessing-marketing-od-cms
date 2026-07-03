@@ -18,9 +18,11 @@ export default defineConfig({
     outputFolder: "admin",
   },
   media: {
-    tina: {
-      mediaRoot: "assets",
-      publicFolder: process.env.CONTENT_PUBLIC_FOLDER || "src/clients/blessing-marketing-od",
+    // Custom git-backed store (lib/media-store.ts) instead of `tina` — the built-in
+    // store runs in cloud mode for a self-hosted apiUrl and can't talk to a git backend.
+    loadCustomStore: async () => {
+      const mod = await import("../lib/media-store");
+      return mod.GitMediaStore;
     },
   },
   schema: {
