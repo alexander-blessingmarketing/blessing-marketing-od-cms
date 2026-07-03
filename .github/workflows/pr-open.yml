@@ -48,6 +48,8 @@ jobs:
       - run: pnpm build
         name: build
         env:
+          # Compile check only. Local mode uses the filesystem datalayer, so the build
+          # needs no MongoDB (the runtime datalayer). The deployed image is built
+          # separately (docker-image.yml -> Dockerfile) with TINA_PUBLIC_IS_LOCAL=false.
+          TINA_PUBLIC_IS_LOCAL: "true"
           GITHUB_BRANCH: ${{ github.head_ref }}
-          KV_REST_API_URL: http://srh:80
-          KV_REST_API_TOKEN: ${{ env.SRH_TOKEN }}
