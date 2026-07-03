@@ -1,7 +1,7 @@
 import type { Collection } from "tinacms";
 
 // Single-doc JSON collection; path is per-client via CONTENT_PATH env so ONE
-// config serves any client. Fields = superset (see Task 2), all optional.
+// config serves any client. Fields = superset (all Kit sections as optional object fields).
 export const SiteCollection: Collection = {
   name: "site",
   label: "Website-Inhalte",
@@ -268,6 +268,105 @@ export const SiteCollection: Collection = {
       fields: [
         { type: "string", name: "title", label: "Titel" },
         { type: "string", name: "address", label: "Adresse" },
+      ],
+    },
+
+    // --- contact ---
+    {
+      type: "object",
+      name: "contact",
+      label: "Kontakt",
+      fields: [
+        { type: "string", name: "eyebrow", label: "Eyebrow" },
+        { type: "string", name: "title", label: "Titel" },
+        { type: "string", name: "email", label: "E-Mail" },
+        { type: "string", name: "phone", label: "Telefon" },
+        { type: "string", name: "address", label: "Adresse" },
+      ],
+    },
+    // --- process ---
+    {
+      type: "object",
+      name: "process",
+      label: "Ablauf",
+      fields: [
+        { type: "string", name: "eyebrow", label: "Eyebrow" },
+        { type: "string", name: "title", label: "Titel" },
+        {
+          type: "object",
+          name: "steps",
+          label: "Schritte",
+          list: true,
+          ui: { itemProps: (item) => ({ label: item?.title }) },
+          fields: [
+            { type: "string", name: "title", label: "Titel" },
+            { type: "string", name: "description", label: "Beschreibung", ui: { component: "textarea" } },
+          ],
+        },
+      ],
+    },
+    // --- faq ---
+    {
+      type: "object",
+      name: "faq",
+      label: "FAQ",
+      fields: [
+        { type: "string", name: "eyebrow", label: "Eyebrow" },
+        { type: "string", name: "title", label: "Titel" },
+        {
+          type: "object",
+          name: "items",
+          label: "Fragen",
+          list: true,
+          ui: { itemProps: (item) => ({ label: item?.q }) },
+          fields: [
+            { type: "string", name: "q", label: "Frage" },
+            { type: "string", name: "a", label: "Antwort", ui: { component: "textarea" } },
+          ],
+        },
+      ],
+    },
+    // --- gallery ---
+    {
+      type: "object",
+      name: "gallery",
+      label: "Galerie",
+      fields: [
+        { type: "string", name: "eyebrow", label: "Eyebrow" },
+        { type: "string", name: "title", label: "Titel" },
+        {
+          type: "object",
+          name: "images",
+          label: "Bilder",
+          list: true,
+          ui: { itemProps: (item) => ({ label: item?.alt }) },
+          fields: [
+            { type: "image", name: "src", label: "Bild" },
+            { type: "string", name: "alt", label: "Alt-Text" },
+          ],
+        },
+      ],
+    },
+    // --- pricing ---
+    {
+      type: "object",
+      name: "pricing",
+      label: "Preise",
+      fields: [
+        { type: "string", name: "eyebrow", label: "Eyebrow" },
+        { type: "string", name: "title", label: "Titel" },
+        {
+          type: "object",
+          name: "plans",
+          label: "Pakete",
+          list: true,
+          ui: { itemProps: (item) => ({ label: item?.name }) },
+          fields: [
+            { type: "string", name: "name", label: "Name" },
+            { type: "string", name: "price", label: "Preis" },
+            { type: "string", name: "features", label: "Features", list: true },
+          ],
+        },
       ],
     },
   ],

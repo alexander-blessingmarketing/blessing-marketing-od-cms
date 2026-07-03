@@ -248,6 +248,59 @@ type SiteMap {
   address: String
 }
 
+type SiteContact {
+  eyebrow: String
+  title: String
+  email: String
+  phone: String
+  address: String
+}
+
+type SiteProcessSteps {
+  title: String
+  description: String
+}
+
+type SiteProcess {
+  eyebrow: String
+  title: String
+  steps: [SiteProcessSteps]
+}
+
+type SiteFaqItems {
+  q: String
+  a: String
+}
+
+type SiteFaq {
+  eyebrow: String
+  title: String
+  items: [SiteFaqItems]
+}
+
+type SiteGalleryImages {
+  src: String
+  alt: String
+}
+
+type SiteGallery {
+  eyebrow: String
+  title: String
+  images: [SiteGalleryImages]
+}
+
+type SitePricingPlans {
+  name: String
+  price: String
+  features: [String]
+}
+
+type SitePricing {
+  eyebrow: String
+  title: String
+  plans: [SitePricingPlans]
+}
+
 type Site implements Node & Document {
   brand: String
   logo: String
@@ -265,6 +318,11 @@ type Site implements Node & Document {
   testimonials: SiteTestimonials
   cta: SiteCta
   map: SiteMap
+  contact: SiteContact
+  process: SiteProcess
+  faq: SiteFaq
+  gallery: SiteGallery
+  pricing: SitePricing
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -386,6 +444,59 @@ input SiteMapFilter {
   address: StringFilter
 }
 
+input SiteContactFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  email: StringFilter
+  phone: StringFilter
+  address: StringFilter
+}
+
+input SiteProcessStepsFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input SiteProcessFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  steps: SiteProcessStepsFilter
+}
+
+input SiteFaqItemsFilter {
+  q: StringFilter
+  a: StringFilter
+}
+
+input SiteFaqFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  items: SiteFaqItemsFilter
+}
+
+input SiteGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input SiteGalleryFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  images: SiteGalleryImagesFilter
+}
+
+input SitePricingPlansFilter {
+  name: StringFilter
+  price: StringFilter
+  features: StringFilter
+}
+
+input SitePricingFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  plans: SitePricingPlansFilter
+}
+
 input SiteFilter {
   brand: StringFilter
   logo: ImageFilter
@@ -403,6 +514,11 @@ input SiteFilter {
   testimonials: SiteTestimonialsFilter
   cta: SiteCtaFilter
   map: SiteMapFilter
+  contact: SiteContactFilter
+  process: SiteProcessFilter
+  faq: SiteFaqFilter
+  gallery: SiteGalleryFilter
+  pricing: SitePricingFilter
 }
 
 type SiteConnectionEdges {
@@ -565,6 +681,59 @@ input SiteMapMutation {
   address: String
 }
 
+input SiteContactMutation {
+  eyebrow: String
+  title: String
+  email: String
+  phone: String
+  address: String
+}
+
+input SiteProcessStepsMutation {
+  title: String
+  description: String
+}
+
+input SiteProcessMutation {
+  eyebrow: String
+  title: String
+  steps: [SiteProcessStepsMutation]
+}
+
+input SiteFaqItemsMutation {
+  q: String
+  a: String
+}
+
+input SiteFaqMutation {
+  eyebrow: String
+  title: String
+  items: [SiteFaqItemsMutation]
+}
+
+input SiteGalleryImagesMutation {
+  src: String
+  alt: String
+}
+
+input SiteGalleryMutation {
+  eyebrow: String
+  title: String
+  images: [SiteGalleryImagesMutation]
+}
+
+input SitePricingPlansMutation {
+  name: String
+  price: String
+  features: [String]
+}
+
+input SitePricingMutation {
+  eyebrow: String
+  title: String
+  plans: [SitePricingPlansMutation]
+}
+
 input SiteMutation {
   brand: String
   logo: String
@@ -582,6 +751,11 @@ input SiteMutation {
   testimonials: SiteTestimonialsMutation
   cta: SiteCtaMutation
   map: SiteMapMutation
+  contact: SiteContactMutation
+  process: SiteProcessMutation
+  faq: SiteFaqMutation
+  gallery: SiteGalleryMutation
+  pricing: SitePricingMutation
 }
 
 schema {

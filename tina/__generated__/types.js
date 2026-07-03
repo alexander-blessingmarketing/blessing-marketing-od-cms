@@ -131,6 +131,55 @@ export const SitePartsFragmentDoc = gql`
     title
     address
   }
+  contact {
+    __typename
+    eyebrow
+    title
+    email
+    phone
+    address
+  }
+  process {
+    __typename
+    eyebrow
+    title
+    steps {
+      __typename
+      title
+      description
+    }
+  }
+  faq {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      q
+      a
+    }
+  }
+  gallery {
+    __typename
+    eyebrow
+    title
+    images {
+      __typename
+      src
+      alt
+    }
+  }
+  pricing {
+    __typename
+    eyebrow
+    title
+    plans {
+      __typename
+      name
+      price
+      features
+    }
+  }
 }
     `;
 export const UserDocument = gql`

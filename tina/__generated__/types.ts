@@ -369,6 +369,68 @@ export type SiteMap = {
   address?: Maybe<Scalars['String']['output']>;
 };
 
+export type SiteContact = {
+  __typename?: 'SiteContact';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  address?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteProcessSteps = {
+  __typename?: 'SiteProcessSteps';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteProcess = {
+  __typename?: 'SiteProcess';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  steps?: Maybe<Array<Maybe<SiteProcessSteps>>>;
+};
+
+export type SiteFaqItems = {
+  __typename?: 'SiteFaqItems';
+  q?: Maybe<Scalars['String']['output']>;
+  a?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteFaq = {
+  __typename?: 'SiteFaq';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<SiteFaqItems>>>;
+};
+
+export type SiteGalleryImages = {
+  __typename?: 'SiteGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteGallery = {
+  __typename?: 'SiteGallery';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<SiteGalleryImages>>>;
+};
+
+export type SitePricingPlans = {
+  __typename?: 'SitePricingPlans';
+  name?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['String']['output']>;
+  features?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type SitePricing = {
+  __typename?: 'SitePricing';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  plans?: Maybe<Array<Maybe<SitePricingPlans>>>;
+};
+
 export type Site = Node & Document & {
   __typename?: 'Site';
   brand?: Maybe<Scalars['String']['output']>;
@@ -387,6 +449,11 @@ export type Site = Node & Document & {
   testimonials?: Maybe<SiteTestimonials>;
   cta?: Maybe<SiteCta>;
   map?: Maybe<SiteMap>;
+  contact?: Maybe<SiteContact>;
+  process?: Maybe<SiteProcess>;
+  faq?: Maybe<SiteFaq>;
+  gallery?: Maybe<SiteGallery>;
+  pricing?: Maybe<SitePricing>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -508,6 +575,59 @@ export type SiteMapFilter = {
   address?: InputMaybe<StringFilter>;
 };
 
+export type SiteContactFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  address?: InputMaybe<StringFilter>;
+};
+
+export type SiteProcessStepsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type SiteProcessFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  steps?: InputMaybe<SiteProcessStepsFilter>;
+};
+
+export type SiteFaqItemsFilter = {
+  q?: InputMaybe<StringFilter>;
+  a?: InputMaybe<StringFilter>;
+};
+
+export type SiteFaqFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  items?: InputMaybe<SiteFaqItemsFilter>;
+};
+
+export type SiteGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type SiteGalleryFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  images?: InputMaybe<SiteGalleryImagesFilter>;
+};
+
+export type SitePricingPlansFilter = {
+  name?: InputMaybe<StringFilter>;
+  price?: InputMaybe<StringFilter>;
+  features?: InputMaybe<StringFilter>;
+};
+
+export type SitePricingFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  plans?: InputMaybe<SitePricingPlansFilter>;
+};
+
 export type SiteFilter = {
   brand?: InputMaybe<StringFilter>;
   logo?: InputMaybe<ImageFilter>;
@@ -525,6 +645,11 @@ export type SiteFilter = {
   testimonials?: InputMaybe<SiteTestimonialsFilter>;
   cta?: InputMaybe<SiteCtaFilter>;
   map?: InputMaybe<SiteMapFilter>;
+  contact?: InputMaybe<SiteContactFilter>;
+  process?: InputMaybe<SiteProcessFilter>;
+  faq?: InputMaybe<SiteFaqFilter>;
+  gallery?: InputMaybe<SiteGalleryFilter>;
+  pricing?: InputMaybe<SitePricingFilter>;
 };
 
 export type SiteConnectionEdges = {
@@ -752,6 +877,59 @@ export type SiteMapMutation = {
   address?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type SiteContactMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  address?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteProcessStepsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteProcessMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  steps?: InputMaybe<Array<InputMaybe<SiteProcessStepsMutation>>>;
+};
+
+export type SiteFaqItemsMutation = {
+  q?: InputMaybe<Scalars['String']['input']>;
+  a?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteFaqMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<SiteFaqItemsMutation>>>;
+};
+
+export type SiteGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteGalleryMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<SiteGalleryImagesMutation>>>;
+};
+
+export type SitePricingPlansMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['String']['input']>;
+  features?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type SitePricingMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  plans?: InputMaybe<Array<InputMaybe<SitePricingPlansMutation>>>;
+};
+
 export type SiteMutation = {
   brand?: InputMaybe<Scalars['String']['input']>;
   logo?: InputMaybe<Scalars['String']['input']>;
@@ -769,11 +947,16 @@ export type SiteMutation = {
   testimonials?: InputMaybe<SiteTestimonialsMutation>;
   cta?: InputMaybe<SiteCtaMutation>;
   map?: InputMaybe<SiteMapMutation>;
+  contact?: InputMaybe<SiteContactMutation>;
+  process?: InputMaybe<SiteProcessMutation>;
+  faq?: InputMaybe<SiteFaqMutation>;
+  gallery?: InputMaybe<SiteGalleryMutation>;
+  pricing?: InputMaybe<SitePricingMutation>;
 };
 
 export type UserPartsFragment = { __typename: 'User', users?: Array<{ __typename: 'UserUsers', username: string, name?: string | null, email?: string | null, password: { __typename?: 'UserUsersPassword', value: string, passwordChangeRequired?: boolean | null } } | null> | null };
 
-export type SitePartsFragment = { __typename: 'Site', brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null };
+export type SitePartsFragment = { __typename: 'Site', brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null, contact?: { __typename: 'SiteContact', eyebrow?: string | null, title?: string | null, email?: string | null, phone?: string | null, address?: string | null } | null, process?: { __typename: 'SiteProcess', eyebrow?: string | null, title?: string | null, steps?: Array<{ __typename: 'SiteProcessSteps', title?: string | null, description?: string | null } | null> | null } | null, faq?: { __typename: 'SiteFaq', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteFaqItems', q?: string | null, a?: string | null } | null> | null } | null, gallery?: { __typename: 'SiteGallery', eyebrow?: string | null, title?: string | null, images?: Array<{ __typename: 'SiteGalleryImages', src?: string | null, alt?: string | null } | null> | null } | null, pricing?: { __typename: 'SitePricing', eyebrow?: string | null, title?: string | null, plans?: Array<{ __typename: 'SitePricingPlans', name?: string | null, price?: string | null, features?: Array<string | null> | null } | null> | null } | null };
 
 export type UserQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -799,7 +982,7 @@ export type SiteQueryVariables = Exact<{
 }>;
 
 
-export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null } };
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null, contact?: { __typename: 'SiteContact', eyebrow?: string | null, title?: string | null, email?: string | null, phone?: string | null, address?: string | null } | null, process?: { __typename: 'SiteProcess', eyebrow?: string | null, title?: string | null, steps?: Array<{ __typename: 'SiteProcessSteps', title?: string | null, description?: string | null } | null> | null } | null, faq?: { __typename: 'SiteFaq', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteFaqItems', q?: string | null, a?: string | null } | null> | null } | null, gallery?: { __typename: 'SiteGallery', eyebrow?: string | null, title?: string | null, images?: Array<{ __typename: 'SiteGalleryImages', src?: string | null, alt?: string | null } | null> | null } | null, pricing?: { __typename: 'SitePricing', eyebrow?: string | null, title?: string | null, plans?: Array<{ __typename: 'SitePricingPlans', name?: string | null, price?: string | null, features?: Array<string | null> | null } | null> | null } | null } };
 
 export type SiteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -811,7 +994,7 @@ export type SiteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null } | null } | null> | null } };
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null, contact?: { __typename: 'SiteContact', eyebrow?: string | null, title?: string | null, email?: string | null, phone?: string | null, address?: string | null } | null, process?: { __typename: 'SiteProcess', eyebrow?: string | null, title?: string | null, steps?: Array<{ __typename: 'SiteProcessSteps', title?: string | null, description?: string | null } | null> | null } | null, faq?: { __typename: 'SiteFaq', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteFaqItems', q?: string | null, a?: string | null } | null> | null } | null, gallery?: { __typename: 'SiteGallery', eyebrow?: string | null, title?: string | null, images?: Array<{ __typename: 'SiteGalleryImages', src?: string | null, alt?: string | null } | null> | null } | null, pricing?: { __typename: 'SitePricing', eyebrow?: string | null, title?: string | null, plans?: Array<{ __typename: 'SitePricingPlans', name?: string | null, price?: string | null, features?: Array<string | null> | null } | null> | null } | null } | null } | null> | null } };
 
 export const UserPartsFragmentDoc = gql`
     fragment UserParts on User {
@@ -938,6 +1121,55 @@ export const SitePartsFragmentDoc = gql`
     __typename
     title
     address
+  }
+  contact {
+    __typename
+    eyebrow
+    title
+    email
+    phone
+    address
+  }
+  process {
+    __typename
+    eyebrow
+    title
+    steps {
+      __typename
+      title
+      description
+    }
+  }
+  faq {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      q
+      a
+    }
+  }
+  gallery {
+    __typename
+    eyebrow
+    title
+    images {
+      __typename
+      src
+      alt
+    }
+  }
+  pricing {
+    __typename
+    eyebrow
+    title
+    plans {
+      __typename
+      name
+      price
+      features
+    }
   }
 }
     `;
