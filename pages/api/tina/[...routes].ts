@@ -1,10 +1,11 @@
 import { TinaNodeBackend, LocalBackendAuthProvider } from "@tinacms/datalayer";
 
-import { TinaAuthJSOptions, AuthJsBackendAuthProvider } from "tinacms-authjs";
+import { AuthJsBackendAuthProvider } from "tinacms-authjs";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 import databaseClient from "../../../tina/__generated__/databaseClient";
 import { createMediaRoute } from "../../../lib/media-handler";
+import { EnvAuthJSOptions } from "../../../lib/env-auth";
 
 // Next's default body parser decodes multipart uploads as a utf-8 string (corrupting
 // binary images) and caps them at 1mb. We disable it so the media upload handler can
@@ -17,8 +18,10 @@ const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 const baseAuth = isLocal
   ? LocalBackendAuthProvider()
   : AuthJsBackendAuthProvider({
-      authOptions: TinaAuthJSOptions({
-        databaseClient: databaseClient,
+      // Env-based credentials (design §6, Fallback ②): users are decoupled from both the
+      // public repo and the datalayer — verified against ADMIN_PASSWORD_HASH /
+      // AGENCY_ADMIN_PASSWORD_HASH. No content/users record, so no redeploy staleness.
+      authOptions: EnvAuthJSOptions({
         secret: process.env.NEXTAUTH_SECRET!,
       }),
     });
