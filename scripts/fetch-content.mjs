@@ -4,13 +4,14 @@ import { mkdirSync, createWriteStream, rmSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { pipeline } from "node:stream/promises";
 
-const repo = process.env.GITHUB_REPO;              // "owner/name"
-const branch = process.env.GITHUB_BRANCH || "main";
+const owner = process.env.GITHUB_OWNER || process.env.VERCEL_GIT_REPO_OWNER;
+const repo = process.env.GITHUB_REPO || process.env.VERCEL_GIT_REPO_SLUG; // repo name only, no slash
+const branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || "main";
 const contentPath = process.env.CONTENT_PATH;      // "src/clients/<slug>/content"
-if (!repo || !contentPath) { console.error("GITHUB_REPO and CONTENT_PATH required"); process.exit(1); }
+if (!owner || !repo || !contentPath) { console.error("GITHUB_OWNER, GITHUB_REPO and CONTENT_PATH required"); process.exit(1); }
 const slugDir = contentPath.replace(/\/content$/, ""); // "src/clients/<slug>"
 
-const url = `https://codeload.github.com/${repo}/tar.gz/refs/heads/${branch}`;
+const url = `https://codeload.github.com/${owner}/${repo}/tar.gz/refs/heads/${branch}`;
 const res = await fetch(url);
 if (!res.ok) { console.error(`content fetch failed: ${res.status} ${url}`); process.exit(1); }
 mkdirSync("/tmp/site", { recursive: true });

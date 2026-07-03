@@ -1,9 +1,12 @@
 import { Octokit } from "@octokit/rest";
 
 // Git-backed media for self-hosted Tina. Reads/writes assets in the client repo.
-const owner = () => (process.env.GITHUB_REPO || "").split("/")[0];
-const repo = () => (process.env.GITHUB_REPO || "").split("/")[1];
-const branch = () => process.env.GITHUB_BRANCH || "main";
+const owner = () =>
+  process.env.GITHUB_OWNER || process.env.VERCEL_GIT_REPO_OWNER || "";
+const repo = () =>
+  process.env.GITHUB_REPO || process.env.VERCEL_GIT_REPO_SLUG || "";
+const branch = () =>
+  process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || "main";
 const publicFolder = () =>
   process.env.CONTENT_PUBLIC_FOLDER || "src/clients/blessing-marketing-od";
 const mediaRoot = () => "assets";
