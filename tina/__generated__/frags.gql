@@ -12,7 +12,7 @@ fragment UserParts on User {
   }
 }
 
-fragment BlessingParts on Blessing {
+fragment SiteParts on Site {
   __typename
   brand
   logo

@@ -1,19 +1,13 @@
 import type { Collection } from "tinacms";
 
-// Single-doc JSON collection modeling every top-level key of
-// src/clients/blessing-marketing-od/content/de.json (blessing-marketing-od-site repo).
-// Field order mirrors the JSON so editors see sections in page order.
-export const BlessingCollection: Collection = {
-  name: "blessing",
-  label: "Blessing Marketing – Website Inhalte",
-  path: "src/clients/blessing-marketing-od/content",
+// Single-doc JSON collection; path is per-client via CONTENT_PATH env so ONE
+// config serves any client. Fields = superset (see Task 2), all optional.
+export const SiteCollection: Collection = {
+  name: "site",
+  label: "Website-Inhalte",
+  path: process.env.CONTENT_PATH || "content",
   format: "json",
-  ui: {
-    allowedActions: {
-      create: false,
-      delete: false,
-    },
-  },
+  ui: { allowedActions: { create: false, delete: false } },
   fields: [
     // --- Global / brand ---
     { type: "string", name: "brand", label: "Marke (Name)" },

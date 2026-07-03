@@ -5,18 +5,13 @@ import {
 } from "tinacms-authjs/dist/tinacms";
 import { defineConfig, LocalAuthProvider } from "tinacms";
 
-// tina/collections/blessing.ts
-var BlessingCollection = {
-  name: "blessing",
-  label: "Blessing Marketing \u2013 Website Inhalte",
-  path: "src/clients/blessing-marketing-od/content",
+// tina/collections/site.ts
+var SiteCollection = {
+  name: "site",
+  label: "Website-Inhalte",
+  path: process.env.CONTENT_PATH || "content",
   format: "json",
-  ui: {
-    allowedActions: {
-      create: false,
-      delete: false
-    }
-  },
+  ui: { allowedActions: { create: false, delete: false } },
   fields: [
     // --- Global / brand ---
     { type: "string", name: "brand", label: "Marke (Name)" },
@@ -284,11 +279,11 @@ var config_default = defineConfig({
   media: {
     tina: {
       mediaRoot: "assets",
-      publicFolder: "src/clients/blessing-marketing-od"
+      publicFolder: process.env.CONTENT_PUBLIC_FOLDER || "src/clients/blessing-marketing-od"
     }
   },
   schema: {
-    collections: [TinaUserCollection, BlessingCollection]
+    collections: [TinaUserCollection, SiteCollection]
   }
 });
 export {

@@ -20,8 +20,8 @@ export const UserPartsFragmentDoc = gql`
   }
 }
     `;
-export const BlessingPartsFragmentDoc = gql`
-    fragment BlessingParts on Blessing {
+export const SitePartsFragmentDoc = gql`
+    fragment SiteParts on Site {
   __typename
   brand
   logo
@@ -190,9 +190,9 @@ export const UserConnectionDocument = gql`
   }
 }
     ${UserPartsFragmentDoc}`;
-export const BlessingDocument = gql`
-    query blessing($relativePath: String!) {
-  blessing(relativePath: $relativePath) {
+export const SiteDocument = gql`
+    query site($relativePath: String!) {
+  site(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -205,13 +205,13 @@ export const BlessingDocument = gql`
       }
       id
     }
-    ...BlessingParts
+    ...SiteParts
   }
 }
-    ${BlessingPartsFragmentDoc}`;
-export const BlessingConnectionDocument = gql`
-    query blessingConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BlessingFilter) {
-  blessingConnection(
+    ${SitePartsFragmentDoc}`;
+export const SiteConnectionDocument = gql`
+    query siteConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteFilter) {
+  siteConnection(
     before: $before
     after: $after
     first: $first
@@ -241,12 +241,12 @@ export const BlessingConnectionDocument = gql`
           }
           id
         }
-        ...BlessingParts
+        ...SiteParts
       }
     }
   }
 }
-    ${BlessingPartsFragmentDoc}`;
+    ${SitePartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     user(variables, options) {
@@ -255,11 +255,11 @@ export function getSdk(requester) {
     userConnection(variables, options) {
       return requester(UserConnectionDocument, variables, options);
     },
-    blessing(variables, options) {
-      return requester(BlessingDocument, variables, options);
+    site(variables, options) {
+      return requester(SiteDocument, variables, options);
     },
-    blessingConnection(variables, options) {
-      return requester(BlessingConnectionDocument, variables, options);
+    siteConnection(variables, options) {
+      return requester(SiteConnectionDocument, variables, options);
     }
   };
 }
