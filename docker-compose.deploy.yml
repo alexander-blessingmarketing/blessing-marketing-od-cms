@@ -1,0 +1,57 @@
+# Per-client provisioning template for the shared Tina backend (Architecture B).
+#
+# The image ghcr.io/.../blessing-marketing-od-cms:latest is GENERIC — every
+# client difference lives only in the environment block below. To onboard a new
+# client: copy this file, fill in the placeholders, point Traefik at the client
+# subdomain, and bring it up. One shared mongo serves all clients (dbName per client).
+#
+# Password hashes: generate with `node scripts/gen-password-hash.mjs "<password>"`
+# (pbkdf2, tinacms-compatible) and paste the output into *_PASSWORD_HASH below.
+# Secrets belong in a per-client `.env` (env_file) or your Docker secrets manager,
+# NOT committed here — the values below are placeholders only.
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    networks: [internal]
+
+  cms:
+    image: ghcr.io/alexander-blessingmarketing/blessing-marketing-od-cms:latest
+    restart: unless-stopped
+    environment:
+      TINA_PUBLIC_IS_LOCAL: "false"
+      # --- client content source (public Astro repo; read needs no token) ---
+      GITHUB_OWNER: alexander-blessingmarketing
+      GITHUB_REPO: blessing-marketing-od-site        # repo name only, no owner/slash
+      GITHUB_BRANCH: main
+      CONTENT_PATH: src/clients/blessing-marketing-od/content
+      CONTENT_PUBLIC_FOLDER: src/clients/blessing-marketing-od
+      # --- per-client datalayer namespace on the shared mongo ---
+      MONGO_DB: tina_blessing-marketing-od
+      MONGODB_URI: mongodb://mongo:27017/
+      # --- write-back (media + content commits) needs Contents:write on the site repo ---
+      GITHUB_PERSONAL_ACCESS_TOKEN: "<client PAT, Contents:write on GITHUB_OWNER/GITHUB_REPO>"
+      # --- auth (decoupled, env-only; see lib/env-auth.ts) ---
+      NEXTAUTH_SECRET: "<random per instance, e.g. openssl rand -base64 32>"
+      ADMIN_USER: "admin"
+      ADMIN_PASSWORD_HASH: "<gen-password-hash.mjs output for the client password>"
+      AGENCY_ADMIN_USER: "<agency-admin username>"
+      AGENCY_ADMIN_PASSWORD_HASH: "<gen-password-hash.mjs output, shared agency password>"
+    depends_on: [mongo]
+    networks: [internal]
+    labels:
+      - "traefik.enable=true"
+      # One router/service per client — rename `bmod-cms` + set the client subdomain.
+      - "traefik.http.routers.bmod-cms.rule=Host(`srv1379189.hstgr.cloud`)"
+      - "traefik.http.routers.bmod-cms.entrypoints=websecure"
+      - "traefik.http.routers.bmod-cms.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bmod-cms.loadbalancer.server.port=3000"
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  mongo-data:

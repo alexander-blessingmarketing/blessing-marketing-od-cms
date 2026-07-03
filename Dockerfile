@@ -28,6 +28,6 @@ EXPOSE 3000
 # No client content is baked into the image. At container start: fetch the
 # client's content+assets fresh from its public site repo, reindex tina
 # content against Mongo, then start the Next.js server.
-# NOTE: seed-users.mjs intentionally omitted here — it doesn't exist yet
-# (lands in a later task); this ENTRYPOINT will need to add it back then.
+# NOTE: no user seeding — auth is env-decoupled (lib/env-auth.ts, design §6
+# Fallback II), so there is no content/users doc to seed or re-index.
 ENTRYPOINT ["sh","-c","node scripts/fetch-content.mjs && NODE_OPTIONS=--max-old-space-size=4096 pnpm exec tinacms build && pnpm exec next start -p 3000"]
