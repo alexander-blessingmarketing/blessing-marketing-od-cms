@@ -17,6 +17,10 @@ const DIGEST = "sha256";
 
 export function checkPasswordHash(saltedHash: string, password: string): boolean {
   if (!saltedHash || !password) return false;
+  // Tolerate whitespace/newlines in the stored hash: a long hash pasted into a YAML
+  // compose/.env often wraps across lines, and YAML folds those newlines into spaces
+  // mid-hex. Strip all whitespace so the value is used as one continuous hex string.
+  saltedHash = saltedHash.replace(/\s+/g, "");
   const salt = saltedHash.slice(0, SALT_LENGTH * 2);
   const expectedHex = saltedHash.slice(SALT_LENGTH * 2);
   if (!salt || !expectedHex) return false;
