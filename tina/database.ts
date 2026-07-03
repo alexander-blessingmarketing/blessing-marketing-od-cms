@@ -31,7 +31,7 @@ export default isLocal
       }),
       databaseAdapter: new MongodbLevel<string, Record<string, unknown>>({
         collectionName: `tinacms-${branch}`,
-        dbName: "tinacms",
+        dbName: process.env.MONGO_DB || "tinacms",
         mongoUri: process.env.MONGODB_URI as string,
       }),
       namespace: branch,

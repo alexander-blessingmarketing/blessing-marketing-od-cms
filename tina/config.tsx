@@ -4,7 +4,7 @@ import {
 } from "tinacms-authjs/dist/tinacms";
 import { defineConfig, LocalAuthProvider } from "tinacms";
 
-import { BlessingCollection } from "./collections/blessing";
+import { SiteCollection } from "./collections/site";
 
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 
@@ -18,17 +18,14 @@ export default defineConfig({
     outputFolder: "admin",
   },
   media: {
-    tina: {
-      mediaRoot: "assets",
-      publicFolder: "src/clients/blessing-marketing-od",
-      // Read-only static media: `tinacms build` generates a manifest of the
-      // baked-in assets, so the Media Manager lists them without a backend
-      // media route (TinaNodeBackend serves only gql+auth). Uploading new files
-      // needs a custom /api/tina/media handler — deferred to the one-repo move.
-      static: true,
+    // Custom git-backed store (lib/media-store.ts) instead of `tina` — the built-in
+    // store runs in cloud mode for a self-hosted apiUrl and can't talk to a git backend.
+    loadCustomStore: async () => {
+      const mod = await import("../lib/media-store");
+      return mod.GitMediaStore;
     },
   },
   schema: {
-    collections: [TinaUserCollection, BlessingCollection],
+    collections: [TinaUserCollection, SiteCollection],
   },
 });

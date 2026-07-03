@@ -53,8 +53,8 @@ query userConnection($before: String, $after: String, $first: Float, $last: Floa
   }
 }
 
-query blessing($relativePath: String!) {
-  blessing(relativePath: $relativePath) {
+query site($relativePath: String!) {
+  site(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -67,12 +67,12 @@ query blessing($relativePath: String!) {
       }
       id
     }
-    ...BlessingParts
+    ...SiteParts
   }
 }
 
-query blessingConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BlessingFilter) {
-  blessingConnection(
+query siteConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteFilter) {
+  siteConnection(
     before: $before
     after: $after
     first: $first
@@ -102,7 +102,7 @@ query blessingConnection($before: String, $after: String, $first: Float, $last: 
           }
           id
         }
-        ...BlessingParts
+        ...SiteParts
       }
     }
   }

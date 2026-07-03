@@ -17,14 +17,10 @@ tsconfig.tsbuildinfo
 
 # tina generated artifacts (rebuilt by `tinacms build`/`tinacms dev`)
 
-# The Tina self-hosted backend indexes content from the LOCAL filesystem baked
-# into the image at `tinacms build` time (the GitHub provider is only used for
-# write-back/commits, NOT for reading content at runtime). So the content +
-# assets the CMS edits MUST be tracked here, or the collection indexes 0 docs.
-# Build-only Astro files (Page.astro, _shell, preset.ts) stay ignored.
-/src/clients/blessing-marketing-od/*
-!/src/clients/blessing-marketing-od/content/
-!/src/clients/blessing-marketing-od/assets/
+# Client content + assets are no longer committed here: scripts/fetch-content.mjs
+# pulls them fresh from the public client site repo at container start (see
+# Dockerfile ENTRYPOINT), so the image never bakes in stale content.
+/src/clients/blessing-marketing-od
 
 # misc
 .DS_Store

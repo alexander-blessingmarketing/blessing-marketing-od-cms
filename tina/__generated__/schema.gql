@@ -58,13 +58,13 @@ type Query {
   authenticate(sub: String!, password: String!): UserUsers
   authorize: UserUsers
   userConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: UserFilter): UserConnection!
-  blessing(relativePath: String): Blessing!
-  blessingConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: BlessingFilter): BlessingConnection!
+  site(relativePath: String): Site!
+  siteConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SiteFilter): SiteConnection!
 }
 
 input DocumentFilter {
   user: UserFilter
-  blessing: BlessingFilter
+  site: SiteFilter
 }
 
 type DocumentConnectionEdges {
@@ -90,7 +90,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = User | Blessing | Folder
+union DocumentNode = User | Site | Folder
 
 type UserUsersPassword {
   value: String!
@@ -139,12 +139,12 @@ type UserConnection implements Connection {
   edges: [UserConnectionEdges]
 }
 
-type BlessingNav {
+type SiteNav {
   label: String
   href: String
 }
 
-type BlessingHero {
+type SiteHero {
   eyebrow: String
   title: String
   subtitle: String
@@ -154,40 +154,40 @@ type BlessingHero {
   imageAlt: String
 }
 
-type BlessingLogosItems {
+type SiteLogosItems {
   src: String
   alt: String
 }
 
-type BlessingLogos {
+type SiteLogos {
   eyebrow: String
   title: String
-  items: [BlessingLogosItems]
+  items: [SiteLogosItems]
 }
 
-type BlessingServicesItems {
+type SiteServicesItems {
   title: String
   description: String
 }
 
-type BlessingServices {
+type SiteServices {
   eyebrow: String
   title: String
-  items: [BlessingServicesItems]
+  items: [SiteServicesItems]
 }
 
-type BlessingStatsItems {
+type SiteStatsItems {
   value: String
   label: String
 }
 
-type BlessingStats {
+type SiteStats {
   eyebrow: String
   title: String
-  items: [BlessingStatsItems]
+  items: [SiteStatsItems]
 }
 
-type BlessingCasesItems {
+type SiteCasesItems {
   client: String
   metric: String
   situation: [String]
@@ -199,72 +199,130 @@ type BlessingCasesItems {
   href: String
 }
 
-type BlessingCases {
+type SiteCases {
   eyebrow: String
   title: String
-  items: [BlessingCasesItems]
+  items: [SiteCasesItems]
 }
 
-type BlessingAbout {
+type SiteAbout {
   eyebrow: String
   title: String
   paragraphs: [String]
 }
 
-type BlessingPeopleItems {
+type SitePeopleItems {
   name: String
   role: String
   image: String
   imageAlt: String
 }
 
-type BlessingPeople {
+type SitePeople {
   eyebrow: String
   title: String
-  items: [BlessingPeopleItems]
+  items: [SitePeopleItems]
 }
 
-type BlessingTestimonialsItems {
+type SiteTestimonialsItems {
   quote: String
   author: String
   role: String
 }
 
-type BlessingTestimonials {
+type SiteTestimonials {
   eyebrow: String
   title: String
-  items: [BlessingTestimonialsItems]
+  items: [SiteTestimonialsItems]
 }
 
-type BlessingCta {
+type SiteCta {
   title: String
   subtitle: String
   ctaLabel: String
   ctaHref: String
 }
 
-type BlessingMap {
+type SiteMap {
   title: String
   address: String
 }
 
-type Blessing implements Node & Document {
+type SiteContact {
+  eyebrow: String
+  title: String
+  email: String
+  phone: String
+  address: String
+}
+
+type SiteProcessSteps {
+  title: String
+  description: String
+}
+
+type SiteProcess {
+  eyebrow: String
+  title: String
+  steps: [SiteProcessSteps]
+}
+
+type SiteFaqItems {
+  q: String
+  a: String
+}
+
+type SiteFaq {
+  eyebrow: String
+  title: String
+  items: [SiteFaqItems]
+}
+
+type SiteGalleryImages {
+  src: String
+  alt: String
+}
+
+type SiteGallery {
+  eyebrow: String
+  title: String
+  images: [SiteGalleryImages]
+}
+
+type SitePricingPlans {
+  name: String
+  price: String
+  features: [String]
+}
+
+type SitePricing {
+  eyebrow: String
+  title: String
+  plans: [SitePricingPlans]
+}
+
+type Site implements Node & Document {
   brand: String
   logo: String
   logoAlt: String
   favicon: String
-  nav: [BlessingNav]
+  nav: [SiteNav]
   footerNote: String
-  hero: BlessingHero
-  logos: BlessingLogos
-  services: BlessingServices
-  stats: BlessingStats
-  cases: BlessingCases
-  about: BlessingAbout
-  people: BlessingPeople
-  testimonials: BlessingTestimonials
-  cta: BlessingCta
-  map: BlessingMap
+  hero: SiteHero
+  logos: SiteLogos
+  services: SiteServices
+  stats: SiteStats
+  cases: SiteCases
+  about: SiteAbout
+  people: SitePeople
+  testimonials: SiteTestimonials
+  cta: SiteCta
+  map: SiteMap
+  contact: SiteContact
+  process: SiteProcess
+  faq: SiteFaq
+  gallery: SiteGallery
+  pricing: SitePricing
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -277,12 +335,12 @@ input ImageFilter {
   in: [String]
 }
 
-input BlessingNavFilter {
+input SiteNavFilter {
   label: StringFilter
   href: StringFilter
 }
 
-input BlessingHeroFilter {
+input SiteHeroFilter {
   eyebrow: StringFilter
   title: StringFilter
   subtitle: StringFilter
@@ -292,40 +350,40 @@ input BlessingHeroFilter {
   imageAlt: StringFilter
 }
 
-input BlessingLogosItemsFilter {
+input SiteLogosItemsFilter {
   src: ImageFilter
   alt: StringFilter
 }
 
-input BlessingLogosFilter {
+input SiteLogosFilter {
   eyebrow: StringFilter
   title: StringFilter
-  items: BlessingLogosItemsFilter
+  items: SiteLogosItemsFilter
 }
 
-input BlessingServicesItemsFilter {
+input SiteServicesItemsFilter {
   title: StringFilter
   description: StringFilter
 }
 
-input BlessingServicesFilter {
+input SiteServicesFilter {
   eyebrow: StringFilter
   title: StringFilter
-  items: BlessingServicesItemsFilter
+  items: SiteServicesItemsFilter
 }
 
-input BlessingStatsItemsFilter {
+input SiteStatsItemsFilter {
   value: StringFilter
   label: StringFilter
 }
 
-input BlessingStatsFilter {
+input SiteStatsFilter {
   eyebrow: StringFilter
   title: StringFilter
-  items: BlessingStatsItemsFilter
+  items: SiteStatsItemsFilter
 }
 
-input BlessingCasesItemsFilter {
+input SiteCasesItemsFilter {
   client: StringFilter
   metric: StringFilter
   situation: StringFilter
@@ -337,83 +395,141 @@ input BlessingCasesItemsFilter {
   href: StringFilter
 }
 
-input BlessingCasesFilter {
+input SiteCasesFilter {
   eyebrow: StringFilter
   title: StringFilter
-  items: BlessingCasesItemsFilter
+  items: SiteCasesItemsFilter
 }
 
-input BlessingAboutFilter {
+input SiteAboutFilter {
   eyebrow: StringFilter
   title: StringFilter
   paragraphs: StringFilter
 }
 
-input BlessingPeopleItemsFilter {
+input SitePeopleItemsFilter {
   name: StringFilter
   role: StringFilter
   image: ImageFilter
   imageAlt: StringFilter
 }
 
-input BlessingPeopleFilter {
+input SitePeopleFilter {
   eyebrow: StringFilter
   title: StringFilter
-  items: BlessingPeopleItemsFilter
+  items: SitePeopleItemsFilter
 }
 
-input BlessingTestimonialsItemsFilter {
+input SiteTestimonialsItemsFilter {
   quote: StringFilter
   author: StringFilter
   role: StringFilter
 }
 
-input BlessingTestimonialsFilter {
+input SiteTestimonialsFilter {
   eyebrow: StringFilter
   title: StringFilter
-  items: BlessingTestimonialsItemsFilter
+  items: SiteTestimonialsItemsFilter
 }
 
-input BlessingCtaFilter {
+input SiteCtaFilter {
   title: StringFilter
   subtitle: StringFilter
   ctaLabel: StringFilter
   ctaHref: StringFilter
 }
 
-input BlessingMapFilter {
+input SiteMapFilter {
   title: StringFilter
   address: StringFilter
 }
 
-input BlessingFilter {
+input SiteContactFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  email: StringFilter
+  phone: StringFilter
+  address: StringFilter
+}
+
+input SiteProcessStepsFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input SiteProcessFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  steps: SiteProcessStepsFilter
+}
+
+input SiteFaqItemsFilter {
+  q: StringFilter
+  a: StringFilter
+}
+
+input SiteFaqFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  items: SiteFaqItemsFilter
+}
+
+input SiteGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input SiteGalleryFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  images: SiteGalleryImagesFilter
+}
+
+input SitePricingPlansFilter {
+  name: StringFilter
+  price: StringFilter
+  features: StringFilter
+}
+
+input SitePricingFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  plans: SitePricingPlansFilter
+}
+
+input SiteFilter {
   brand: StringFilter
   logo: ImageFilter
   logoAlt: StringFilter
   favicon: ImageFilter
-  nav: BlessingNavFilter
+  nav: SiteNavFilter
   footerNote: StringFilter
-  hero: BlessingHeroFilter
-  logos: BlessingLogosFilter
-  services: BlessingServicesFilter
-  stats: BlessingStatsFilter
-  cases: BlessingCasesFilter
-  about: BlessingAboutFilter
-  people: BlessingPeopleFilter
-  testimonials: BlessingTestimonialsFilter
-  cta: BlessingCtaFilter
-  map: BlessingMapFilter
+  hero: SiteHeroFilter
+  logos: SiteLogosFilter
+  services: SiteServicesFilter
+  stats: SiteStatsFilter
+  cases: SiteCasesFilter
+  about: SiteAboutFilter
+  people: SitePeopleFilter
+  testimonials: SiteTestimonialsFilter
+  cta: SiteCtaFilter
+  map: SiteMapFilter
+  contact: SiteContactFilter
+  process: SiteProcessFilter
+  faq: SiteFaqFilter
+  gallery: SiteGalleryFilter
+  pricing: SitePricingFilter
 }
 
-type BlessingConnectionEdges {
+type SiteConnectionEdges {
   cursor: String!
-  node: Blessing
+  node: Site
 }
 
-type BlessingConnection implements Connection {
+type SiteConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [BlessingConnectionEdges]
+  edges: [SiteConnectionEdges]
 }
 
 type Mutation {
@@ -425,19 +541,19 @@ type Mutation {
   updatePassword(password: String!): Boolean!
   updateUser(relativePath: String!, params: UserMutation!): User!
   createUser(relativePath: String!, params: UserMutation!): User!
-  updateBlessing(relativePath: String!, params: BlessingMutation!): Blessing!
-  createBlessing(relativePath: String!, params: BlessingMutation!): Blessing!
+  updateSite(relativePath: String!, params: SiteMutation!): Site!
+  createSite(relativePath: String!, params: SiteMutation!): Site!
 }
 
 input DocumentUpdateMutation {
   user: UserMutation
-  blessing: BlessingMutation
+  site: SiteMutation
   relativePath: String
 }
 
 input DocumentMutation {
   user: UserMutation
-  blessing: BlessingMutation
+  site: SiteMutation
 }
 
 input UserUsersPasswordMutation {
@@ -456,12 +572,12 @@ input UserMutation {
   users: [UserUsersMutation]
 }
 
-input BlessingNavMutation {
+input SiteNavMutation {
   label: String
   href: String
 }
 
-input BlessingHeroMutation {
+input SiteHeroMutation {
   eyebrow: String
   title: String
   subtitle: String
@@ -471,40 +587,40 @@ input BlessingHeroMutation {
   imageAlt: String
 }
 
-input BlessingLogosItemsMutation {
+input SiteLogosItemsMutation {
   src: String
   alt: String
 }
 
-input BlessingLogosMutation {
+input SiteLogosMutation {
   eyebrow: String
   title: String
-  items: [BlessingLogosItemsMutation]
+  items: [SiteLogosItemsMutation]
 }
 
-input BlessingServicesItemsMutation {
+input SiteServicesItemsMutation {
   title: String
   description: String
 }
 
-input BlessingServicesMutation {
+input SiteServicesMutation {
   eyebrow: String
   title: String
-  items: [BlessingServicesItemsMutation]
+  items: [SiteServicesItemsMutation]
 }
 
-input BlessingStatsItemsMutation {
+input SiteStatsItemsMutation {
   value: String
   label: String
 }
 
-input BlessingStatsMutation {
+input SiteStatsMutation {
   eyebrow: String
   title: String
-  items: [BlessingStatsItemsMutation]
+  items: [SiteStatsItemsMutation]
 }
 
-input BlessingCasesItemsMutation {
+input SiteCasesItemsMutation {
   client: String
   metric: String
   situation: [String]
@@ -516,72 +632,130 @@ input BlessingCasesItemsMutation {
   href: String
 }
 
-input BlessingCasesMutation {
+input SiteCasesMutation {
   eyebrow: String
   title: String
-  items: [BlessingCasesItemsMutation]
+  items: [SiteCasesItemsMutation]
 }
 
-input BlessingAboutMutation {
+input SiteAboutMutation {
   eyebrow: String
   title: String
   paragraphs: [String]
 }
 
-input BlessingPeopleItemsMutation {
+input SitePeopleItemsMutation {
   name: String
   role: String
   image: String
   imageAlt: String
 }
 
-input BlessingPeopleMutation {
+input SitePeopleMutation {
   eyebrow: String
   title: String
-  items: [BlessingPeopleItemsMutation]
+  items: [SitePeopleItemsMutation]
 }
 
-input BlessingTestimonialsItemsMutation {
+input SiteTestimonialsItemsMutation {
   quote: String
   author: String
   role: String
 }
 
-input BlessingTestimonialsMutation {
+input SiteTestimonialsMutation {
   eyebrow: String
   title: String
-  items: [BlessingTestimonialsItemsMutation]
+  items: [SiteTestimonialsItemsMutation]
 }
 
-input BlessingCtaMutation {
+input SiteCtaMutation {
   title: String
   subtitle: String
   ctaLabel: String
   ctaHref: String
 }
 
-input BlessingMapMutation {
+input SiteMapMutation {
   title: String
   address: String
 }
 
-input BlessingMutation {
+input SiteContactMutation {
+  eyebrow: String
+  title: String
+  email: String
+  phone: String
+  address: String
+}
+
+input SiteProcessStepsMutation {
+  title: String
+  description: String
+}
+
+input SiteProcessMutation {
+  eyebrow: String
+  title: String
+  steps: [SiteProcessStepsMutation]
+}
+
+input SiteFaqItemsMutation {
+  q: String
+  a: String
+}
+
+input SiteFaqMutation {
+  eyebrow: String
+  title: String
+  items: [SiteFaqItemsMutation]
+}
+
+input SiteGalleryImagesMutation {
+  src: String
+  alt: String
+}
+
+input SiteGalleryMutation {
+  eyebrow: String
+  title: String
+  images: [SiteGalleryImagesMutation]
+}
+
+input SitePricingPlansMutation {
+  name: String
+  price: String
+  features: [String]
+}
+
+input SitePricingMutation {
+  eyebrow: String
+  title: String
+  plans: [SitePricingPlansMutation]
+}
+
+input SiteMutation {
   brand: String
   logo: String
   logoAlt: String
   favicon: String
-  nav: [BlessingNavMutation]
+  nav: [SiteNavMutation]
   footerNote: String
-  hero: BlessingHeroMutation
-  logos: BlessingLogosMutation
-  services: BlessingServicesMutation
-  stats: BlessingStatsMutation
-  cases: BlessingCasesMutation
-  about: BlessingAboutMutation
-  people: BlessingPeopleMutation
-  testimonials: BlessingTestimonialsMutation
-  cta: BlessingCtaMutation
-  map: BlessingMapMutation
+  hero: SiteHeroMutation
+  logos: SiteLogosMutation
+  services: SiteServicesMutation
+  stats: SiteStatsMutation
+  cases: SiteCasesMutation
+  about: SiteAboutMutation
+  people: SitePeopleMutation
+  testimonials: SiteTestimonialsMutation
+  cta: SiteCtaMutation
+  map: SiteMapMutation
+  contact: SiteContactMutation
+  process: SiteProcessMutation
+  faq: SiteFaqMutation
+  gallery: SiteGalleryMutation
+  pricing: SitePricingMutation
 }
 
 schema {

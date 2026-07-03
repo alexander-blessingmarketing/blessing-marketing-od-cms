@@ -86,8 +86,8 @@ export type Query = {
   authenticate?: Maybe<UserUsers>;
   authorize?: Maybe<UserUsers>;
   userConnection: UserConnection;
-  blessing: Blessing;
-  blessingConnection: BlessingConnection;
+  site: Site;
+  siteConnection: SiteConnection;
 };
 
 
@@ -133,23 +133,23 @@ export type QueryUserConnectionArgs = {
 };
 
 
-export type QueryBlessingArgs = {
+export type QuerySiteArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryBlessingConnectionArgs = {
+export type QuerySiteConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<BlessingFilter>;
+  filter?: InputMaybe<SiteFilter>;
 };
 
 export type DocumentFilter = {
   user?: InputMaybe<UserFilter>;
-  blessing?: InputMaybe<BlessingFilter>;
+  site?: InputMaybe<SiteFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -189,7 +189,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = User | Blessing | Folder;
+export type DocumentNode = User | Site | Folder;
 
 export type UserUsersPassword = {
   __typename?: 'UserUsersPassword';
@@ -243,14 +243,14 @@ export type UserConnection = Connection & {
   edges?: Maybe<Array<Maybe<UserConnectionEdges>>>;
 };
 
-export type BlessingNav = {
-  __typename?: 'BlessingNav';
+export type SiteNav = {
+  __typename?: 'SiteNav';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingHero = {
-  __typename?: 'BlessingHero';
+export type SiteHero = {
+  __typename?: 'SiteHero';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
@@ -260,47 +260,47 @@ export type BlessingHero = {
   imageAlt?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingLogosItems = {
-  __typename?: 'BlessingLogosItems';
+export type SiteLogosItems = {
+  __typename?: 'SiteLogosItems';
   src?: Maybe<Scalars['String']['output']>;
   alt?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingLogos = {
-  __typename?: 'BlessingLogos';
+export type SiteLogos = {
+  __typename?: 'SiteLogos';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<BlessingLogosItems>>>;
+  items?: Maybe<Array<Maybe<SiteLogosItems>>>;
 };
 
-export type BlessingServicesItems = {
-  __typename?: 'BlessingServicesItems';
+export type SiteServicesItems = {
+  __typename?: 'SiteServicesItems';
   title?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingServices = {
-  __typename?: 'BlessingServices';
+export type SiteServices = {
+  __typename?: 'SiteServices';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<BlessingServicesItems>>>;
+  items?: Maybe<Array<Maybe<SiteServicesItems>>>;
 };
 
-export type BlessingStatsItems = {
-  __typename?: 'BlessingStatsItems';
+export type SiteStatsItems = {
+  __typename?: 'SiteStatsItems';
   value?: Maybe<Scalars['String']['output']>;
   label?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingStats = {
-  __typename?: 'BlessingStats';
+export type SiteStats = {
+  __typename?: 'SiteStats';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<BlessingStatsItems>>>;
+  items?: Maybe<Array<Maybe<SiteStatsItems>>>;
 };
 
-export type BlessingCasesItems = {
-  __typename?: 'BlessingCasesItems';
+export type SiteCasesItems = {
+  __typename?: 'SiteCasesItems';
   client?: Maybe<Scalars['String']['output']>;
   metric?: Maybe<Scalars['String']['output']>;
   situation?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
@@ -312,81 +312,148 @@ export type BlessingCasesItems = {
   href?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingCases = {
-  __typename?: 'BlessingCases';
+export type SiteCases = {
+  __typename?: 'SiteCases';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<BlessingCasesItems>>>;
+  items?: Maybe<Array<Maybe<SiteCasesItems>>>;
 };
 
-export type BlessingAbout = {
-  __typename?: 'BlessingAbout';
+export type SiteAbout = {
+  __typename?: 'SiteAbout';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   paragraphs?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
-export type BlessingPeopleItems = {
-  __typename?: 'BlessingPeopleItems';
+export type SitePeopleItems = {
+  __typename?: 'SitePeopleItems';
   name?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Scalars['String']['output']>;
   image?: Maybe<Scalars['String']['output']>;
   imageAlt?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingPeople = {
-  __typename?: 'BlessingPeople';
+export type SitePeople = {
+  __typename?: 'SitePeople';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<BlessingPeopleItems>>>;
+  items?: Maybe<Array<Maybe<SitePeopleItems>>>;
 };
 
-export type BlessingTestimonialsItems = {
-  __typename?: 'BlessingTestimonialsItems';
+export type SiteTestimonialsItems = {
+  __typename?: 'SiteTestimonialsItems';
   quote?: Maybe<Scalars['String']['output']>;
   author?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingTestimonials = {
-  __typename?: 'BlessingTestimonials';
+export type SiteTestimonials = {
+  __typename?: 'SiteTestimonials';
   eyebrow?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<BlessingTestimonialsItems>>>;
+  items?: Maybe<Array<Maybe<SiteTestimonialsItems>>>;
 };
 
-export type BlessingCta = {
-  __typename?: 'BlessingCta';
+export type SiteCta = {
+  __typename?: 'SiteCta';
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaHref?: Maybe<Scalars['String']['output']>;
 };
 
-export type BlessingMap = {
-  __typename?: 'BlessingMap';
+export type SiteMap = {
+  __typename?: 'SiteMap';
   title?: Maybe<Scalars['String']['output']>;
   address?: Maybe<Scalars['String']['output']>;
 };
 
-export type Blessing = Node & Document & {
-  __typename?: 'Blessing';
+export type SiteContact = {
+  __typename?: 'SiteContact';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  address?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteProcessSteps = {
+  __typename?: 'SiteProcessSteps';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteProcess = {
+  __typename?: 'SiteProcess';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  steps?: Maybe<Array<Maybe<SiteProcessSteps>>>;
+};
+
+export type SiteFaqItems = {
+  __typename?: 'SiteFaqItems';
+  q?: Maybe<Scalars['String']['output']>;
+  a?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteFaq = {
+  __typename?: 'SiteFaq';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<SiteFaqItems>>>;
+};
+
+export type SiteGalleryImages = {
+  __typename?: 'SiteGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteGallery = {
+  __typename?: 'SiteGallery';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<SiteGalleryImages>>>;
+};
+
+export type SitePricingPlans = {
+  __typename?: 'SitePricingPlans';
+  name?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['String']['output']>;
+  features?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type SitePricing = {
+  __typename?: 'SitePricing';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  plans?: Maybe<Array<Maybe<SitePricingPlans>>>;
+};
+
+export type Site = Node & Document & {
+  __typename?: 'Site';
   brand?: Maybe<Scalars['String']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
   logoAlt?: Maybe<Scalars['String']['output']>;
   favicon?: Maybe<Scalars['String']['output']>;
-  nav?: Maybe<Array<Maybe<BlessingNav>>>;
+  nav?: Maybe<Array<Maybe<SiteNav>>>;
   footerNote?: Maybe<Scalars['String']['output']>;
-  hero?: Maybe<BlessingHero>;
-  logos?: Maybe<BlessingLogos>;
-  services?: Maybe<BlessingServices>;
-  stats?: Maybe<BlessingStats>;
-  cases?: Maybe<BlessingCases>;
-  about?: Maybe<BlessingAbout>;
-  people?: Maybe<BlessingPeople>;
-  testimonials?: Maybe<BlessingTestimonials>;
-  cta?: Maybe<BlessingCta>;
-  map?: Maybe<BlessingMap>;
+  hero?: Maybe<SiteHero>;
+  logos?: Maybe<SiteLogos>;
+  services?: Maybe<SiteServices>;
+  stats?: Maybe<SiteStats>;
+  cases?: Maybe<SiteCases>;
+  about?: Maybe<SiteAbout>;
+  people?: Maybe<SitePeople>;
+  testimonials?: Maybe<SiteTestimonials>;
+  cta?: Maybe<SiteCta>;
+  map?: Maybe<SiteMap>;
+  contact?: Maybe<SiteContact>;
+  process?: Maybe<SiteProcess>;
+  faq?: Maybe<SiteFaq>;
+  gallery?: Maybe<SiteGallery>;
+  pricing?: Maybe<SitePricing>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -399,12 +466,12 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type BlessingNavFilter = {
+export type SiteNavFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
 };
 
-export type BlessingHeroFilter = {
+export type SiteHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
@@ -414,40 +481,40 @@ export type BlessingHeroFilter = {
   imageAlt?: InputMaybe<StringFilter>;
 };
 
-export type BlessingLogosItemsFilter = {
+export type SiteLogosItemsFilter = {
   src?: InputMaybe<ImageFilter>;
   alt?: InputMaybe<StringFilter>;
 };
 
-export type BlessingLogosFilter = {
+export type SiteLogosFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<BlessingLogosItemsFilter>;
+  items?: InputMaybe<SiteLogosItemsFilter>;
 };
 
-export type BlessingServicesItemsFilter = {
+export type SiteServicesItemsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
 };
 
-export type BlessingServicesFilter = {
+export type SiteServicesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<BlessingServicesItemsFilter>;
+  items?: InputMaybe<SiteServicesItemsFilter>;
 };
 
-export type BlessingStatsItemsFilter = {
+export type SiteStatsItemsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
 };
 
-export type BlessingStatsFilter = {
+export type SiteStatsFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<BlessingStatsItemsFilter>;
+  items?: InputMaybe<SiteStatsItemsFilter>;
 };
 
-export type BlessingCasesItemsFilter = {
+export type SiteCasesItemsFilter = {
   client?: InputMaybe<StringFilter>;
   metric?: InputMaybe<StringFilter>;
   situation?: InputMaybe<StringFilter>;
@@ -459,85 +526,143 @@ export type BlessingCasesItemsFilter = {
   href?: InputMaybe<StringFilter>;
 };
 
-export type BlessingCasesFilter = {
+export type SiteCasesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<BlessingCasesItemsFilter>;
+  items?: InputMaybe<SiteCasesItemsFilter>;
 };
 
-export type BlessingAboutFilter = {
+export type SiteAboutFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   paragraphs?: InputMaybe<StringFilter>;
 };
 
-export type BlessingPeopleItemsFilter = {
+export type SitePeopleItemsFilter = {
   name?: InputMaybe<StringFilter>;
   role?: InputMaybe<StringFilter>;
   image?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
 };
 
-export type BlessingPeopleFilter = {
+export type SitePeopleFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<BlessingPeopleItemsFilter>;
+  items?: InputMaybe<SitePeopleItemsFilter>;
 };
 
-export type BlessingTestimonialsItemsFilter = {
+export type SiteTestimonialsItemsFilter = {
   quote?: InputMaybe<StringFilter>;
   author?: InputMaybe<StringFilter>;
   role?: InputMaybe<StringFilter>;
 };
 
-export type BlessingTestimonialsFilter = {
+export type SiteTestimonialsFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<BlessingTestimonialsItemsFilter>;
+  items?: InputMaybe<SiteTestimonialsItemsFilter>;
 };
 
-export type BlessingCtaFilter = {
+export type SiteCtaFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaHref?: InputMaybe<StringFilter>;
 };
 
-export type BlessingMapFilter = {
+export type SiteMapFilter = {
   title?: InputMaybe<StringFilter>;
   address?: InputMaybe<StringFilter>;
 };
 
-export type BlessingFilter = {
+export type SiteContactFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  address?: InputMaybe<StringFilter>;
+};
+
+export type SiteProcessStepsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type SiteProcessFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  steps?: InputMaybe<SiteProcessStepsFilter>;
+};
+
+export type SiteFaqItemsFilter = {
+  q?: InputMaybe<StringFilter>;
+  a?: InputMaybe<StringFilter>;
+};
+
+export type SiteFaqFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  items?: InputMaybe<SiteFaqItemsFilter>;
+};
+
+export type SiteGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type SiteGalleryFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  images?: InputMaybe<SiteGalleryImagesFilter>;
+};
+
+export type SitePricingPlansFilter = {
+  name?: InputMaybe<StringFilter>;
+  price?: InputMaybe<StringFilter>;
+  features?: InputMaybe<StringFilter>;
+};
+
+export type SitePricingFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  plans?: InputMaybe<SitePricingPlansFilter>;
+};
+
+export type SiteFilter = {
   brand?: InputMaybe<StringFilter>;
   logo?: InputMaybe<ImageFilter>;
   logoAlt?: InputMaybe<StringFilter>;
   favicon?: InputMaybe<ImageFilter>;
-  nav?: InputMaybe<BlessingNavFilter>;
+  nav?: InputMaybe<SiteNavFilter>;
   footerNote?: InputMaybe<StringFilter>;
-  hero?: InputMaybe<BlessingHeroFilter>;
-  logos?: InputMaybe<BlessingLogosFilter>;
-  services?: InputMaybe<BlessingServicesFilter>;
-  stats?: InputMaybe<BlessingStatsFilter>;
-  cases?: InputMaybe<BlessingCasesFilter>;
-  about?: InputMaybe<BlessingAboutFilter>;
-  people?: InputMaybe<BlessingPeopleFilter>;
-  testimonials?: InputMaybe<BlessingTestimonialsFilter>;
-  cta?: InputMaybe<BlessingCtaFilter>;
-  map?: InputMaybe<BlessingMapFilter>;
+  hero?: InputMaybe<SiteHeroFilter>;
+  logos?: InputMaybe<SiteLogosFilter>;
+  services?: InputMaybe<SiteServicesFilter>;
+  stats?: InputMaybe<SiteStatsFilter>;
+  cases?: InputMaybe<SiteCasesFilter>;
+  about?: InputMaybe<SiteAboutFilter>;
+  people?: InputMaybe<SitePeopleFilter>;
+  testimonials?: InputMaybe<SiteTestimonialsFilter>;
+  cta?: InputMaybe<SiteCtaFilter>;
+  map?: InputMaybe<SiteMapFilter>;
+  contact?: InputMaybe<SiteContactFilter>;
+  process?: InputMaybe<SiteProcessFilter>;
+  faq?: InputMaybe<SiteFaqFilter>;
+  gallery?: InputMaybe<SiteGalleryFilter>;
+  pricing?: InputMaybe<SitePricingFilter>;
 };
 
-export type BlessingConnectionEdges = {
-  __typename?: 'BlessingConnectionEdges';
+export type SiteConnectionEdges = {
+  __typename?: 'SiteConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Blessing>;
+  node?: Maybe<Site>;
 };
 
-export type BlessingConnection = Connection & {
-  __typename?: 'BlessingConnection';
+export type SiteConnection = Connection & {
+  __typename?: 'SiteConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<BlessingConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<SiteConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -550,8 +675,8 @@ export type Mutation = {
   updatePassword: Scalars['Boolean']['output'];
   updateUser: User;
   createUser: User;
-  updateBlessing: Blessing;
-  createBlessing: Blessing;
+  updateSite: Site;
+  createSite: Site;
 };
 
 
@@ -605,26 +730,26 @@ export type MutationCreateUserArgs = {
 };
 
 
-export type MutationUpdateBlessingArgs = {
+export type MutationUpdateSiteArgs = {
   relativePath: Scalars['String']['input'];
-  params: BlessingMutation;
+  params: SiteMutation;
 };
 
 
-export type MutationCreateBlessingArgs = {
+export type MutationCreateSiteArgs = {
   relativePath: Scalars['String']['input'];
-  params: BlessingMutation;
+  params: SiteMutation;
 };
 
 export type DocumentUpdateMutation = {
   user?: InputMaybe<UserMutation>;
-  blessing?: InputMaybe<BlessingMutation>;
+  site?: InputMaybe<SiteMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   user?: InputMaybe<UserMutation>;
-  blessing?: InputMaybe<BlessingMutation>;
+  site?: InputMaybe<SiteMutation>;
 };
 
 export type UserUsersPasswordMutation = {
@@ -643,12 +768,12 @@ export type UserMutation = {
   users?: InputMaybe<Array<InputMaybe<UserUsersMutation>>>;
 };
 
-export type BlessingNavMutation = {
+export type SiteNavMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingHeroMutation = {
+export type SiteHeroMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
@@ -658,40 +783,40 @@ export type BlessingHeroMutation = {
   imageAlt?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingLogosItemsMutation = {
+export type SiteLogosItemsMutation = {
   src?: InputMaybe<Scalars['String']['input']>;
   alt?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingLogosMutation = {
+export type SiteLogosMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<BlessingLogosItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteLogosItemsMutation>>>;
 };
 
-export type BlessingServicesItemsMutation = {
+export type SiteServicesItemsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingServicesMutation = {
+export type SiteServicesMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<BlessingServicesItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteServicesItemsMutation>>>;
 };
 
-export type BlessingStatsItemsMutation = {
+export type SiteStatsItemsMutation = {
   value?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingStatsMutation = {
+export type SiteStatsMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<BlessingStatsItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteStatsItemsMutation>>>;
 };
 
-export type BlessingCasesItemsMutation = {
+export type SiteCasesItemsMutation = {
   client?: InputMaybe<Scalars['String']['input']>;
   metric?: InputMaybe<Scalars['String']['input']>;
   situation?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -703,77 +828,135 @@ export type BlessingCasesItemsMutation = {
   href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingCasesMutation = {
+export type SiteCasesMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<BlessingCasesItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteCasesItemsMutation>>>;
 };
 
-export type BlessingAboutMutation = {
+export type SiteAboutMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   paragraphs?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type BlessingPeopleItemsMutation = {
+export type SitePeopleItemsMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
   imageAlt?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingPeopleMutation = {
+export type SitePeopleMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<BlessingPeopleItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SitePeopleItemsMutation>>>;
 };
 
-export type BlessingTestimonialsItemsMutation = {
+export type SiteTestimonialsItemsMutation = {
   quote?: InputMaybe<Scalars['String']['input']>;
   author?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingTestimonialsMutation = {
+export type SiteTestimonialsMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<BlessingTestimonialsItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<SiteTestimonialsItemsMutation>>>;
 };
 
-export type BlessingCtaMutation = {
+export type SiteCtaMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaHref?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingMapMutation = {
+export type SiteMapMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   address?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type BlessingMutation = {
+export type SiteContactMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  address?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteProcessStepsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteProcessMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  steps?: InputMaybe<Array<InputMaybe<SiteProcessStepsMutation>>>;
+};
+
+export type SiteFaqItemsMutation = {
+  q?: InputMaybe<Scalars['String']['input']>;
+  a?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteFaqMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<SiteFaqItemsMutation>>>;
+};
+
+export type SiteGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SiteGalleryMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<SiteGalleryImagesMutation>>>;
+};
+
+export type SitePricingPlansMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['String']['input']>;
+  features?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type SitePricingMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  plans?: InputMaybe<Array<InputMaybe<SitePricingPlansMutation>>>;
+};
+
+export type SiteMutation = {
   brand?: InputMaybe<Scalars['String']['input']>;
   logo?: InputMaybe<Scalars['String']['input']>;
   logoAlt?: InputMaybe<Scalars['String']['input']>;
   favicon?: InputMaybe<Scalars['String']['input']>;
-  nav?: InputMaybe<Array<InputMaybe<BlessingNavMutation>>>;
+  nav?: InputMaybe<Array<InputMaybe<SiteNavMutation>>>;
   footerNote?: InputMaybe<Scalars['String']['input']>;
-  hero?: InputMaybe<BlessingHeroMutation>;
-  logos?: InputMaybe<BlessingLogosMutation>;
-  services?: InputMaybe<BlessingServicesMutation>;
-  stats?: InputMaybe<BlessingStatsMutation>;
-  cases?: InputMaybe<BlessingCasesMutation>;
-  about?: InputMaybe<BlessingAboutMutation>;
-  people?: InputMaybe<BlessingPeopleMutation>;
-  testimonials?: InputMaybe<BlessingTestimonialsMutation>;
-  cta?: InputMaybe<BlessingCtaMutation>;
-  map?: InputMaybe<BlessingMapMutation>;
+  hero?: InputMaybe<SiteHeroMutation>;
+  logos?: InputMaybe<SiteLogosMutation>;
+  services?: InputMaybe<SiteServicesMutation>;
+  stats?: InputMaybe<SiteStatsMutation>;
+  cases?: InputMaybe<SiteCasesMutation>;
+  about?: InputMaybe<SiteAboutMutation>;
+  people?: InputMaybe<SitePeopleMutation>;
+  testimonials?: InputMaybe<SiteTestimonialsMutation>;
+  cta?: InputMaybe<SiteCtaMutation>;
+  map?: InputMaybe<SiteMapMutation>;
+  contact?: InputMaybe<SiteContactMutation>;
+  process?: InputMaybe<SiteProcessMutation>;
+  faq?: InputMaybe<SiteFaqMutation>;
+  gallery?: InputMaybe<SiteGalleryMutation>;
+  pricing?: InputMaybe<SitePricingMutation>;
 };
 
 export type UserPartsFragment = { __typename: 'User', users?: Array<{ __typename: 'UserUsers', username: string, name?: string | null, email?: string | null, password: { __typename?: 'UserUsersPassword', value: string, passwordChangeRequired?: boolean | null } } | null> | null };
 
-export type BlessingPartsFragment = { __typename: 'Blessing', brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, nav?: Array<{ __typename: 'BlessingNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'BlessingHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'BlessingLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'BlessingServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'BlessingStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'BlessingCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'BlessingAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'BlessingPeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingPeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'BlessingTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'BlessingCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'BlessingMap', title?: string | null, address?: string | null } | null };
+export type SitePartsFragment = { __typename: 'Site', brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null, contact?: { __typename: 'SiteContact', eyebrow?: string | null, title?: string | null, email?: string | null, phone?: string | null, address?: string | null } | null, process?: { __typename: 'SiteProcess', eyebrow?: string | null, title?: string | null, steps?: Array<{ __typename: 'SiteProcessSteps', title?: string | null, description?: string | null } | null> | null } | null, faq?: { __typename: 'SiteFaq', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteFaqItems', q?: string | null, a?: string | null } | null> | null } | null, gallery?: { __typename: 'SiteGallery', eyebrow?: string | null, title?: string | null, images?: Array<{ __typename: 'SiteGalleryImages', src?: string | null, alt?: string | null } | null> | null } | null, pricing?: { __typename: 'SitePricing', eyebrow?: string | null, title?: string | null, plans?: Array<{ __typename: 'SitePricingPlans', name?: string | null, price?: string | null, features?: Array<string | null> | null } | null> | null } | null };
 
 export type UserQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -794,24 +977,24 @@ export type UserConnectionQueryVariables = Exact<{
 
 export type UserConnectionQuery = { __typename?: 'Query', userConnection: { __typename?: 'UserConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'UserConnectionEdges', cursor: string, node?: { __typename: 'User', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, users?: Array<{ __typename: 'UserUsers', username: string, name?: string | null, email?: string | null, password: { __typename?: 'UserUsersPassword', value: string, passwordChangeRequired?: boolean | null } } | null> | null } | null } | null> | null } };
 
-export type BlessingQueryVariables = Exact<{
+export type SiteQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type BlessingQuery = { __typename?: 'Query', blessing: { __typename: 'Blessing', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'BlessingNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'BlessingHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'BlessingLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'BlessingServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'BlessingStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'BlessingCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'BlessingAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'BlessingPeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingPeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'BlessingTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'BlessingCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'BlessingMap', title?: string | null, address?: string | null } | null } };
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null, contact?: { __typename: 'SiteContact', eyebrow?: string | null, title?: string | null, email?: string | null, phone?: string | null, address?: string | null } | null, process?: { __typename: 'SiteProcess', eyebrow?: string | null, title?: string | null, steps?: Array<{ __typename: 'SiteProcessSteps', title?: string | null, description?: string | null } | null> | null } | null, faq?: { __typename: 'SiteFaq', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteFaqItems', q?: string | null, a?: string | null } | null> | null } | null, gallery?: { __typename: 'SiteGallery', eyebrow?: string | null, title?: string | null, images?: Array<{ __typename: 'SiteGalleryImages', src?: string | null, alt?: string | null } | null> | null } | null, pricing?: { __typename: 'SitePricing', eyebrow?: string | null, title?: string | null, plans?: Array<{ __typename: 'SitePricingPlans', name?: string | null, price?: string | null, features?: Array<string | null> | null } | null> | null } | null } };
 
-export type BlessingConnectionQueryVariables = Exact<{
+export type SiteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<BlessingFilter>;
+  filter?: InputMaybe<SiteFilter>;
 }>;
 
 
-export type BlessingConnectionQuery = { __typename?: 'Query', blessingConnection: { __typename?: 'BlessingConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BlessingConnectionEdges', cursor: string, node?: { __typename: 'Blessing', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'BlessingNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'BlessingHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'BlessingLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'BlessingServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'BlessingStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'BlessingCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'BlessingAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'BlessingPeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingPeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'BlessingTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'BlessingTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'BlessingCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'BlessingMap', title?: string | null, address?: string | null } | null } | null } | null> | null } };
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, brand?: string | null, logo?: string | null, logoAlt?: string | null, favicon?: string | null, footerNote?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, nav?: Array<{ __typename: 'SiteNav', label?: string | null, href?: string | null } | null> | null, hero?: { __typename: 'SiteHero', eyebrow?: string | null, title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null, image?: string | null, imageAlt?: string | null } | null, logos?: { __typename: 'SiteLogos', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteLogosItems', src?: string | null, alt?: string | null } | null> | null } | null, services?: { __typename: 'SiteServices', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteServicesItems', title?: string | null, description?: string | null } | null> | null } | null, stats?: { __typename: 'SiteStats', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteStatsItems', value?: string | null, label?: string | null } | null> | null } | null, cases?: { __typename: 'SiteCases', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteCasesItems', client?: string | null, metric?: string | null, situation?: Array<string | null> | null, result?: Array<string | null> | null, logo?: string | null, logoAlt?: string | null, image?: string | null, imageAlt?: string | null, href?: string | null } | null> | null } | null, about?: { __typename: 'SiteAbout', eyebrow?: string | null, title?: string | null, paragraphs?: Array<string | null> | null } | null, people?: { __typename: 'SitePeople', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SitePeopleItems', name?: string | null, role?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null, testimonials?: { __typename: 'SiteTestimonials', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteTestimonialsItems', quote?: string | null, author?: string | null, role?: string | null } | null> | null } | null, cta?: { __typename: 'SiteCta', title?: string | null, subtitle?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, map?: { __typename: 'SiteMap', title?: string | null, address?: string | null } | null, contact?: { __typename: 'SiteContact', eyebrow?: string | null, title?: string | null, email?: string | null, phone?: string | null, address?: string | null } | null, process?: { __typename: 'SiteProcess', eyebrow?: string | null, title?: string | null, steps?: Array<{ __typename: 'SiteProcessSteps', title?: string | null, description?: string | null } | null> | null } | null, faq?: { __typename: 'SiteFaq', eyebrow?: string | null, title?: string | null, items?: Array<{ __typename: 'SiteFaqItems', q?: string | null, a?: string | null } | null> | null } | null, gallery?: { __typename: 'SiteGallery', eyebrow?: string | null, title?: string | null, images?: Array<{ __typename: 'SiteGalleryImages', src?: string | null, alt?: string | null } | null> | null } | null, pricing?: { __typename: 'SitePricing', eyebrow?: string | null, title?: string | null, plans?: Array<{ __typename: 'SitePricingPlans', name?: string | null, price?: string | null, features?: Array<string | null> | null } | null> | null } | null } | null } | null> | null } };
 
 export const UserPartsFragmentDoc = gql`
     fragment UserParts on User {
@@ -828,8 +1011,8 @@ export const UserPartsFragmentDoc = gql`
   }
 }
     `;
-export const BlessingPartsFragmentDoc = gql`
-    fragment BlessingParts on Blessing {
+export const SitePartsFragmentDoc = gql`
+    fragment SiteParts on Site {
   __typename
   brand
   logo
@@ -939,6 +1122,55 @@ export const BlessingPartsFragmentDoc = gql`
     title
     address
   }
+  contact {
+    __typename
+    eyebrow
+    title
+    email
+    phone
+    address
+  }
+  process {
+    __typename
+    eyebrow
+    title
+    steps {
+      __typename
+      title
+      description
+    }
+  }
+  faq {
+    __typename
+    eyebrow
+    title
+    items {
+      __typename
+      q
+      a
+    }
+  }
+  gallery {
+    __typename
+    eyebrow
+    title
+    images {
+      __typename
+      src
+      alt
+    }
+  }
+  pricing {
+    __typename
+    eyebrow
+    title
+    plans {
+      __typename
+      name
+      price
+      features
+    }
+  }
 }
     `;
 export const UserDocument = gql`
@@ -998,9 +1230,9 @@ export const UserConnectionDocument = gql`
   }
 }
     ${UserPartsFragmentDoc}`;
-export const BlessingDocument = gql`
-    query blessing($relativePath: String!) {
-  blessing(relativePath: $relativePath) {
+export const SiteDocument = gql`
+    query site($relativePath: String!) {
+  site(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -1013,13 +1245,13 @@ export const BlessingDocument = gql`
       }
       id
     }
-    ...BlessingParts
+    ...SiteParts
   }
 }
-    ${BlessingPartsFragmentDoc}`;
-export const BlessingConnectionDocument = gql`
-    query blessingConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BlessingFilter) {
-  blessingConnection(
+    ${SitePartsFragmentDoc}`;
+export const SiteConnectionDocument = gql`
+    query siteConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SiteFilter) {
+  siteConnection(
     before: $before
     after: $after
     first: $first
@@ -1049,12 +1281,12 @@ export const BlessingConnectionDocument = gql`
           }
           id
         }
-        ...BlessingParts
+        ...SiteParts
       }
     }
   }
 }
-    ${BlessingPartsFragmentDoc}`;
+    ${SitePartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -1064,11 +1296,11 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
     userConnection(variables?: UserConnectionQueryVariables, options?: C): Promise<{data: UserConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: UserConnectionQueryVariables, query: string}> {
         return requester<{data: UserConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: UserConnectionQueryVariables, query: string}, UserConnectionQueryVariables>(UserConnectionDocument, variables, options);
       },
-    blessing(variables: BlessingQueryVariables, options?: C): Promise<{data: BlessingQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BlessingQueryVariables, query: string}> {
-        return requester<{data: BlessingQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BlessingQueryVariables, query: string}, BlessingQueryVariables>(BlessingDocument, variables, options);
+    site(variables: SiteQueryVariables, options?: C): Promise<{data: SiteQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteQueryVariables, query: string}> {
+        return requester<{data: SiteQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteQueryVariables, query: string}, SiteQueryVariables>(SiteDocument, variables, options);
       },
-    blessingConnection(variables?: BlessingConnectionQueryVariables, options?: C): Promise<{data: BlessingConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BlessingConnectionQueryVariables, query: string}> {
-        return requester<{data: BlessingConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BlessingConnectionQueryVariables, query: string}, BlessingConnectionQueryVariables>(BlessingConnectionDocument, variables, options);
+    siteConnection(variables?: SiteConnectionQueryVariables, options?: C): Promise<{data: SiteConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteConnectionQueryVariables, query: string}> {
+        return requester<{data: SiteConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SiteConnectionQueryVariables, query: string}, SiteConnectionQueryVariables>(SiteConnectionDocument, variables, options);
       }
     };
   }

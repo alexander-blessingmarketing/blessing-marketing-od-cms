@@ -2,36 +2,16 @@ name: Build Pull request
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-env:
-  NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
-  TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-  NEXT_PUBLIC_TINA_BRANCH: ${{ github.head_ref }}
-  SRH_TOKEN: example_token
 
 jobs:
-  container-job:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: ["20", "22"]
     name: Node ${{ matrix.node }} sample
-    container: denoland/deno
-    services:
-      redis:
-        image: redis/redis-stack-server:6.2.6-v6 # 6.2 is the Upstash compatible Redis version
-      srh:
-        image: hiett/serverless-redis-http:latest
-        env:
-          SRH_MODE: env # We are using env mode because we are only connecting to one server.
-          SRH_TOKEN: ${{ env.SRH_TOKEN }}
-          SRH_CONNECTION_STRING: redis://redis:6379
-
     steps:
-      - name: install git
-        run: apt-get update && apt-get install -y git
-
       - uses: actions/checkout@v4
-        name: Checkout
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -42,12 +22,14 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: pnpm
 
-      - run: pnpm install --frozen-lockfile
-        name: install
+      - name: install
+        run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
-        name: build
+      - name: build
+        run: pnpm build
         env:
+          # Compile check only. Local mode uses the filesystem datalayer, so the build
+          # needs no MongoDB/Redis. The deployed image is built separately
+          # (docker-image.yml -> Dockerfile) with TINA_PUBLIC_IS_LOCAL=false.
+          TINA_PUBLIC_IS_LOCAL: "true"
           GITHUB_BRANCH: ${{ github.head_ref }}
-          KV_REST_API_URL: http://srh:80
-          KV_REST_API_TOKEN: ${{ env.SRH_TOKEN }}
