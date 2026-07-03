@@ -82,7 +82,8 @@ export function createMediaRoute() {
 
       // --- list ---
       if (req.method === "GET" && op === "list") {
-        const dir = parts.slice(4).join("/");
+        // Decode: URL.pathname keeps segments percent-encoded (e.g. %20 for spaces).
+        const dir = decodeURIComponent(parts.slice(4).join("/"));
         const files: { filename: string; src: string }[] = [];
         const directories: string[] = [];
         try {
@@ -145,7 +146,9 @@ export function createMediaRoute() {
 
       // --- delete ---  DELETE /api/tina/media/<path>  (no "delete" segment)
       if (req.method === "DELETE") {
-        const name = parts.slice(3).join("/");
+        // Decode: filenames with spaces arrive percent-encoded (%20) in the pathname;
+        // passing that raw to the GitHub API would look up a literal "%20" name (404).
+        const name = decodeURIComponent(parts.slice(3).join("/"));
         const path = `${repoDir("")}/${name}`;
         try {
           const { data } = await octokit().repos.getContent({
