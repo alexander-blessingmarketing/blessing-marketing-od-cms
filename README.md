@@ -77,11 +77,25 @@ strips whitespace before comparing, so wrapping is harmless; just keep the YAML 
 
 1. Create the client's Astro repo `<client>-site` with content at `src/clients/<slug>/content/de.json` + `assets/`, deploying to GitHub Pages (mirror the pilot repo's layout).
 2. Ensure the client's `de.json` is a **subset** of the superset (`tina/collections/site.ts`). If it needs a section the superset lacks, add it as a new **optional** field (backwards-compatible) and rebuild the image.
-3. Copy `docker-compose.deploy.yml`, fill the env block for the client: subdomain (Traefik labels), `CONTENT_PATH`/`CONTENT_PUBLIC_FOLDER`, `MONGO_DB=tina_<slug>`, PAT with Contents:write, `NEXTAUTH_SECRET`, and the four auth vars (hashes via `gen-password-hash.mjs`).
-4. Point Traefik at the client subdomain and bring the container up. It fetches content, indexes into its Mongo namespace, and serves `/admin`.
-5. Log in with the client or agency admin.
+3. **DNS (one-time, then free per client):** point a subdomain at the VPS. A single **wildcard A-record** `*.cms.<your-domain> → <vps-ip>` covers every client — no per-client DNS. TLS is issued automatically by Traefik (Let's Encrypt HTTP-01) **per subdomain**; no wildcard cert or DNS-API needed.
+4. Create a new Docker Compose project `tina-<slug>` (copy `docker-compose.deploy.yml`) with **its own mongo + cms** and fill the env: `GITHUB_OWNER`, `GITHUB_REPO=<slug>-site`, `CONTENT_PATH`/`CONTENT_PUBLIC_FOLDER`, `MONGO_DB=tina_<slug>`, PAT (Contents:write on the site repo), `NEXTAUTH_SECRET`, `NEXTAUTH_URL=https://<slug>.cms.<domain>`, and the auth vars (hashes via `gen-password-hash.mjs`). Give the Traefik router/service **unique names per client**:
+   ```text
+   traefik.enable=true
+   traefik.http.routers.tina-<slug>.rule=Host(`<slug>.cms.<domain>`)
+   traefik.http.routers.tina-<slug>.entrypoints=websecure
+   traefik.http.routers.tina-<slug>.tls.certresolver=letsencrypt
+   traefik.http.services.tina-<slug>.loadbalancer.server.port=3000
+   ```
+5. Bring the container up. It fetches content, indexes into its `tina_<slug>` namespace, and serves `/admin` at `https://<slug>.cms.<domain>`.
+6. Log in with the client or agency admin and do a test edit → confirm an `Edited with TinaCMS` commit lands in the site repo.
 
-The shared mongo and the GHCR image are reused; a new client = env + container + subdomain.
+Each client is an isolated Compose project (`tina-<slug>`) reusing the one GHCR image and the shared Traefik (host network, Docker provider — reaches each container via its bridge IP, no shared network needed). A new client = repo + env + container + subdomain; measured footprint ~300 MB/client (cms ~220 + mongo ~80). One shared mongo across all clients is possible but low-value (saves only ~80 MB/client) — keep mongo bundled per project until client count grows.
+
+### Onboarding gotchas
+
+- **First Pages deploy of a fresh site often fails** with "Deployment failed, try again later" — a one-time GitHub Pages provisioning race. Just **re-run the workflow once**; subsequent deploys are fine. (Not worth automating — only the first deploy is affected.)
+- **Long secrets get truncated or wrapped on paste.** A PAT (~92 chars) or a hash (1088 chars) pasted into a compose/env editor can lose its tail or gain a folded space. The **hash** is whitespace-tolerant in code; the **PAT is not** — a PAT that's even 2 chars short gives GitHub `401 Bad credentials` on save (`onPut` hook fails). After pasting, verify the PAT's full value (correct ending) and that the hash's YAML stays valid.
+- A client has only a `<slug>-site` repo — there is **no per-client `-cms` repo**; the CMS image is shared, and write-back targets the site repo. (So a save failure is never "the cms repo is missing".)
 
 ## Local development (local mode — no GitHub/Mongo/auth)
 
