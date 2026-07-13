@@ -45,7 +45,7 @@ services:
       - "traefik.enable=true"
       # One router/service per client — rename `bmod-cms` + set the client subdomain.
       - "traefik.http.routers.bmod-cms.rule=Host(`srv1379189.hstgr.cloud`)"
-      - "traefik.http.routers.bmod-cms.entrypoints=websecure"
+      - "traefik.http.routers.bmod-cms.entrypoints=https"
       - "traefik.http.routers.bmod-cms.tls.certresolver=letsencrypt"
       - "traefik.http.services.bmod-cms.loadbalancer.server.port=3000"
 
