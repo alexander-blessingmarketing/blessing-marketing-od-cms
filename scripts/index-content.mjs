@@ -35,6 +35,17 @@ const [graphQLSchema, schema, lookup] = await Promise.all([
   readJson("_lookup.json"),
 ]);
 
+// The `site` collection's path is per-client via CONTENT_PATH (see tina/collections/
+// site.ts) — a RUNTIME env. The schema baked into the image was generated at build time
+// when CONTENT_PATH was unset, so it fell back to "content". Re-apply the runtime value
+// (mirroring site.ts) so this index writes the site doc at the real content location.
+// The backend resolves against the schema THIS index stores in the datalayer, so fixing
+// it here fixes both indexing and querying. Other collections keep their baked paths.
+const siteCollectionPath = process.env.CONTENT_PATH || "content";
+for (const c of schema.collections) {
+  if (c.name === "site") c.path = siteCollectionPath;
+}
+
 const tinaSchema = await createSchema({ schema });
 
 // --- Datalayer identisch zu tina/database.ts (Produktionszweig, Mongo) ---
@@ -64,5 +75,7 @@ database.bridge = new FilesystemBridge(root);
 // daher kein Partial-Reindex/SHA-Handling nötig (das bräuchte ein .git im Container).
 await database.indexContent({ graphQLSchema, tinaSchema, lookup });
 
-console.log(`index-content: reindexed branch "${branch}" into Mongo datalayer`);
+console.log(
+  `index-content: reindexed branch "${branch}" (site path "${siteCollectionPath}") into Mongo datalayer`
+);
 process.exit(0);
