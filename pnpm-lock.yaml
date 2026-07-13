@@ -22,6 +22,9 @@ importers:
       '@tinacms/datalayer':
         specifier: 2.0.21
         version: 2.0.21(react@19.2.6)(typescript@6.0.3)
+      '@tinacms/graphql':
+        specifier: 2.4.1
+        version: 2.4.1(react@19.2.6)(typescript@6.0.3)
       mongodb-level:
         specifier: latest
         version: 0.0.4(mongodb@4.17.2)
