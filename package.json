@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^22.0.1",
-    "@tinacms/cli": "2.5.3",
+    "@tinacms/cli": "2.5.5",
     "@tinacms/datalayer": "2.0.21",
     "@tinacms/graphql": "2.4.1",
     "mongodb-level": "latest",
